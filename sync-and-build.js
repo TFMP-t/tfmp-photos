@@ -172,6 +172,8 @@ async function runSync(scope) {
       }
       if (targetMonth && item.assignment_month !== targetMonth) continue;
       if (item.status !== 'COMPLETED') continue;
+      // بس نوع "IN" (تفتيش دوري) — مش CA (إصلاح) ولا SA أو أي نوع تاني
+      if (item.work_order_template !== 'IN') continue;
       if (processed[item.work_order_number]) continue;
       toProcess.push(item);
     }
