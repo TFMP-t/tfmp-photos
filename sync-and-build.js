@@ -1,6 +1,6 @@
 /**
  * سكريبت واحد بيعمل حاجتين ورا بعض:
- * 1) يسحب أي وورك أوردر جديد (زي server.js بالظبط)
+ * 1) يسحب أي وورك أوردر جديد (زي server.js بالظبط) — بكل الحقول المتاحة في التقرير
  * 2) يبني الموقع الثابت جوه فولدر docs/ عشان GitHub Pages يعرضه
  *
  * ده بيشتغل لوحده من غير أي تدخل، عن طريق GitHub Actions كل 6 ساعات
@@ -69,13 +69,44 @@ async function processWorkOrder(item) {
   const report = await apiGet(`${REAL_REPORT_BASE}/${woNumber}/inspection-report`);
   const wo = report.work_order;
 
+  // بيانات المدرسة الأساسية — بتتحدث دايمًا لو الحقل فاضي في السجل القديم
   if (!schools[code]) {
-    schools[code] = { name: wo.school_name || item.primary_school_name, site: wo.site || item.site || '', workOrders: {} };
+    schools[code] = {
+      name: wo.school_name || item.primary_school_name,
+      site: wo.site || item.site || '',
+      neighbourhood: wo.neighbourhood || '',
+      ministry_id: item.primary_ministry_id || wo.primary_ministry_id || wo.ministry_id || '',
+      geo: {
+        latitude: wo.school_geo_latitude || null,
+        longitude: wo.school_geo_longitude || null
+      },
+      workOrders: {}
+    };
+  } else {
+    const s = schools[code];
+    if (!s.ministry_id) s.ministry_id = item.primary_ministry_id || wo.primary_ministry_id || wo.ministry_id || '';
+    if (!s.site) s.site = wo.site || item.site || '';
+    if (!s.neighbourhood) s.neighbourhood = wo.neighbourhood || '';
+    if (!s.geo || (!s.geo.latitude && wo.school_geo_latitude)) {
+      s.geo = { latitude: wo.school_geo_latitude || null, longitude: wo.school_geo_longitude || null };
+    }
   }
 
-  const findingsMap = {};
+  // تفاصيل كل قسم/مجال بالكامل، مش بس الملاحظة النصية
+  const sectionsMap = {};
   Object.values(report.sections || {}).flat().forEach(s => {
-    findingsMap[s.service_area_code] = { en: s.service_area_en, finding: s.findings };
+    sectionsMap[s.service_area_code] = {
+      section: s.section,
+      name_en: s.service_area_en,
+      name_ar: (report.area_ar && report.area_ar[s.service_area_en]) || '',
+      inspection_focus: s.inspection_focus || [],
+      findings: s.findings || '',
+      finding_ar: (report.option_ar && s.findings && report.option_ar[s.findings]) || '',
+      root_cause: s.root_cause || '',
+      root_cause_ar: (report.option_ar && s.root_cause && report.option_ar[s.root_cause]) || '',
+      overall_remarks: s.overall_remarks || '',
+      availability: s.availability || ''
+    };
   });
 
   const localPhotosByArea = {};
@@ -99,9 +130,22 @@ async function processWorkOrder(item) {
   schools[code].workOrders[woNumber] = {
     status: wo.status,
     assignment_month: item.assignment_month,
+    inspection_cycle: wo.inspection_cycle || null,
+    start_date: wo.start_date || null,
     completion_date: wo.completion_date,
+    total_work_time_min: wo.total_work_time_min || null,
+    inspector_username: wo.assigned_user_name || '',
+    inspector_fullname: wo.assigned_fullname || '',
+    risk_score: wo.risk_score || null,
+    overall_rating: (report.overall_rating && report.overall_rating.overall_rating) || null,
+    overall_rating_remarks: (report.overall_rating && report.overall_rating.remarks) || null,
+    performance_ratings: (report.overall_rating && report.overall_rating.performance_ratings) || null,
     photos_by_area: localPhotosByArea,
-    findingsMap
+    // sections بيحتوي كل التفاصيل؛ findingsMap اتسابت لتوافق النسخة القديمة من الموقع
+    sections: sectionsMap,
+    findingsMap: Object.fromEntries(
+      Object.entries(sectionsMap).map(([k, v]) => [k, { en: v.name_en, finding: v.finding_ar || v.findings }])
+    )
   };
 
   processed[woNumber] = true;
@@ -172,33 +216,52 @@ function buildStaticViewer() {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سجل صور تفتيش المدارس</title>
 <style>
-  :root{--ink:#1c2321;--paper:#f6f4ee;--panel:#fff;--line:#dcd7c9;--steel:#3d5a5c;--steel-dark:#2a4142;--muted:#7a7568}
+  :root{--ink:#1c2321;--paper:#f6f4ee;--panel:#fff;--line:#dcd7c9;--steel:#3d5a5c;--steel-dark:#2a4142;--muted:#7a7568;--accent:#a85c32}
   *{box-sizing:border-box}
   body{margin:0;font-family:Tahoma,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink)}
-  header{background:var(--steel-dark);color:#f0efe8;padding:24px 32px;border-bottom:4px solid #a85c32}
+  header{background:var(--steel-dark);color:#f0efe8;padding:24px 32px;border-bottom:4px solid var(--accent)}
   header h1{margin:0;font-size:1.4rem}
-  .filter-row{max-width:1100px;margin:20px auto 0;padding:0 24px}
-  .filter-row input{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:6px}
+  .filter-row{max-width:1100px;margin:20px auto 0;padding:0 24px;display:flex;gap:10px;flex-wrap:wrap}
+  .filter-row input{flex:1;min-width:220px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;font-size:1rem}
+  .result-count{max-width:1100px;margin:8px auto 0;padding:0 24px;font-size:.85rem;color:var(--muted)}
   main{max-width:1100px;margin:20px auto 60px;padding:0 24px}
   .school-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
-  .school-head{padding:14px 18px;background:#eef0e9;cursor:pointer;display:flex;justify-content:space-between}
+  .school-head{padding:14px 18px;background:#eef0e9;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .school-head-left{display:flex;flex-direction:column;gap:2px}
+  .school-code{font-size:.78rem;color:var(--muted)}
+  .school-meta{font-size:.75rem;color:var(--muted)}
   .school-body{padding:16px 18px;display:none}
   .school-body.open{display:block}
-  .thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-  .thumb{width:80px;height:80px;border-radius:6px;overflow:hidden;border:1px solid var(--line);cursor:pointer}
+  .wo-block{margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+  .wo-block:last-child{border-bottom:none;margin-bottom:0}
+  .wo-title{font-size:.8rem;color:var(--muted);margin-bottom:2px}
+  .wo-meta{font-size:.75rem;color:var(--muted);margin-bottom:8px}
+  .area-block{margin-bottom:14px}
+  .area-name{font-size:.85rem;font-weight:bold;margin-bottom:2px}
+  .area-finding{font-size:.8rem;color:var(--accent);margin-bottom:4px;background:#fbeee4;padding:4px 8px;border-radius:5px;display:inline-block}
+  .area-remarks{font-size:.78rem;color:var(--ink);margin-bottom:6px;white-space:pre-line}
+  .thumbs{display:flex;flex-wrap:wrap;gap:8px}
+  .thumb{width:90px;height:90px;border-radius:6px;overflow:hidden;border:1px solid var(--line);cursor:pointer;position:relative}
   .thumb img{width:100%;height:100%;object-fit:cover}
-  .area-name{font-size:.8rem;color:var(--muted);margin-bottom:4px}
-  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px}
   .lightbox.open{display:flex}
-  .lightbox img{max-width:90vw;max-height:85vh}
+  .lightbox img{max-width:90vw;max-height:75vh}
+  .lightbox-caption{color:#f0efe8;text-align:center;max-width:600px;font-size:.95rem}
+  .no-results{text-align:center;color:var(--muted);padding:40px 0}
 </style>
 </head>
 <body>
 
 <header><h1>سجل صور تفتيش المدارس</h1></header>
-<div class="filter-row"><input id="search" placeholder="بحث باسم مدرسة..."></div>
+<div class="filter-row">
+  <input id="search" placeholder="بحث باسم المدرسة أو الرقم الوزاري أو الموقع أو الحي...">
+</div>
+<div class="result-count" id="resultCount"></div>
 <main id="main"></main>
-<div class="lightbox" id="lightbox"><img id="lightboxImg" src=""></div>
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <script>
 let schools = {};
@@ -206,36 +269,104 @@ fetch('schools-data.json').then(r=>r.json()).then(data=>{ schools = data; render
 
 function render(filter){
   const main = document.getElementById('main');
+  const resultCount = document.getElementById('resultCount');
   main.innerHTML = '';
-  Object.entries(schools).forEach(([code, school])=>{
-    if(filter && !school.name.toLowerCase().includes(filter.toLowerCase())) return;
+  const q = filter.trim().toLowerCase();
+  const entries = Object.entries(schools).filter(([code, school])=>{
+    if(!q) return true;
+    return school.name.toLowerCase().includes(q)
+      || String(code).toLowerCase().includes(q)
+      || String(school.ministry_id || '').toLowerCase().includes(q)
+      || String(school.site || '').toLowerCase().includes(q)
+      || String(school.neighbourhood || '').toLowerCase().includes(q);
+  });
+
+  resultCount.textContent = q ? (entries.length + ' نتيجة') : '';
+
+  if(entries.length === 0){
+    main.innerHTML = '<div class="no-results">مفيش نتايج مطابقة</div>';
+    return;
+  }
+
+  entries.forEach(([code, school])=>{
     const card = document.createElement('div');
     card.className = 'school-card';
+
     const head = document.createElement('div');
     head.className = 'school-head';
-    head.innerHTML = '<strong>' + school.name + '</strong><span>' + Object.keys(school.workOrders).length + ' أمر شغل</span>';
+    head.innerHTML =
+      '<div class="school-head-left">' +
+        '<strong>' + school.name + '</strong>' +
+        '<span class="school-code">الرقم الوزاري: ' + (school.ministry_id || '—') + ' — كود الموقع: ' + code + '</span>' +
+        '<span class="school-meta">' + (school.site || '') + (school.neighbourhood ? ' — ' + school.neighbourhood : '') + '</span>' +
+      '</div>' +
+      '<span>' + Object.keys(school.workOrders).length + ' أمر شغل</span>';
+
     const body = document.createElement('div');
     body.className = 'school-body';
+
     Object.entries(school.workOrders).forEach(([wo, data])=>{
+      const woBlock = document.createElement('div');
+      woBlock.className = 'wo-block';
+
+      const woTitle = document.createElement('div');
+      woTitle.className = 'wo-title';
+      woTitle.textContent = 'أمر شغل: ' + wo + (data.assignment_month ? ' — ' + data.assignment_month : '');
+      woBlock.appendChild(woTitle);
+
+      const woMeta = document.createElement('div');
+      woMeta.className = 'wo-meta';
+      const metaParts = [];
+      if (data.inspector_fullname) metaParts.push('المفتش: ' + data.inspector_fullname);
+      if (data.completion_date) metaParts.push('تاريخ الإنجاز: ' + data.completion_date.slice(0,10));
+      if (data.overall_rating) metaParts.push('التقييم العام: ' + data.overall_rating);
+      woMeta.textContent = metaParts.join(' — ');
+      woBlock.appendChild(woMeta);
+
       Object.entries(data.photos_by_area || {}).forEach(([area, photos])=>{
-        const g = document.createElement('div');
+        const areaBlock = document.createElement('div');
+        areaBlock.className = 'area-block';
+
+        const info = (data.sections && data.sections[area]) || data.findingsMap[area] || {};
         const label = document.createElement('div');
         label.className = 'area-name';
-        label.textContent = (data.findingsMap[area]?.en || area) + (data.findingsMap[area]?.finding ? ' — ' + data.findingsMap[area].finding : '');
-        g.appendChild(label);
+        label.textContent = info.name_ar || info.name_en || info.en || area;
+        areaBlock.appendChild(label);
+
+        const findingText = info.finding_ar || info.findings || info.finding;
+        if(findingText){
+          const finding = document.createElement('div');
+          finding.className = 'area-finding';
+          finding.textContent = '📝 ' + findingText;
+          areaBlock.appendChild(finding);
+        }
+        if(info.overall_remarks){
+          const remarks = document.createElement('div');
+          remarks.className = 'area-remarks';
+          remarks.textContent = info.overall_remarks;
+          areaBlock.appendChild(remarks);
+        }
+
         const thumbs = document.createElement('div');
         thumbs.className = 'thumbs';
         photos.forEach(p=>{
           const t = document.createElement('div');
           t.className = 'thumb';
           t.innerHTML = '<img src="' + p.url + '">';
-          t.onclick = ()=>{ document.getElementById('lightboxImg').src = p.url; document.getElementById('lightbox').classList.add('open'); };
+          t.onclick = ()=>{
+            document.getElementById('lightboxImg').src = p.url;
+            document.getElementById('lightboxCaption').textContent = (info.name_ar || info.name_en || area) + (findingText ? ' — ' + findingText : '');
+            document.getElementById('lightbox').classList.add('open');
+          };
           thumbs.appendChild(t);
         });
-        g.appendChild(thumbs);
-        body.appendChild(g);
+        areaBlock.appendChild(thumbs);
+        woBlock.appendChild(areaBlock);
       });
+
+      body.appendChild(woBlock);
     });
+
     head.onclick = ()=> body.classList.toggle('open');
     card.appendChild(head);
     card.appendChild(body);
