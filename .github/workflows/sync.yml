@@ -1,9 +1,11 @@
-name: Sync school photos and publish
+name: Sync TFMP Photos
 
 on:
+  # يشتغل لوحده كل يوم الساعة 6 الصبح (بتوقيت السعودية / جدة، UTC+3)
   schedule:
-    - cron: '0 */6 * * *'   # كل 6 ساعات
-  workflow_dispatch:         # يخليك تشغّله يدويًا من تبويب Actions لو عايز
+    - cron: '0 3 * * *'
+  # ده بيديك زرار "Run workflow" تدوس عليه يدوي لو عايز تسحب فورًا من غير ما تستنى الصبح
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -12,26 +14,26 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: تنزيل نسخة من الـ repo
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: تجهيز Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: تثبيت المكتبة المطلوبة
         run: npm install node-fetch@2
 
-      - name: Run sync and build
+      - name: تشغيل سكريبت السحب والبناء
         env:
           TFMP_SESSION_COOKIE: ${{ secrets.TFMP_SESSION_COOKIE }}
         run: node sync-and-build.js
 
-      - name: Commit and push changes
+      - name: حفظ ورفع النتيجة
         run: |
-          git config user.name "github-actions"
+          git config user.name "tfmp-bot"
           git config user.email "actions@github.com"
-          git add data docs
-          git diff --quiet && git diff --staged --quiet || git commit -m "تحديث تلقائي للصور والداتا"
+          git add data/ docs/
+          git diff --staged --quiet || git commit -m "تحديث تلقائي للصور والداتا"
           git push
