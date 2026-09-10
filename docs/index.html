@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سجل صور تفتيش المدارس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f5; --surface:#ffffff; --surface-2:#f0f0ec; --line:#e2e1da; --line-soft:#ebeae3;
+  --fg:#1c1d1f; --muted:#5b5c63; --faint:#84858c; --accent:#2f6fed; --good:#1f9d63; --bad:#d3413a;
+  --shadow:0 1px 2px rgba(20,20,30,.05), 0 8px 24px rgba(20,20,30,.06); --radius:14px; --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:"IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono{font-family:"Fira Code",ui-monospace,monospace;font-feature-settings:"tnum"}
+header{position:sticky;top:0;z-index:30;background:rgba(247,247,245,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.head-inner{max-width:1400px;margin:0 auto;padding:16px 22px}
+.title-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h1{margin:0;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.subtitle{color:var(--faint);font-size:13px}
+.kpis{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:10px 14px;min-width:110px}
+.kpi .val{font-size:20px;font-weight:600;line-height:1.1}
+.kpi .lbl{color:var(--muted);font-size:11px;margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.field{position:relative;display:flex;align-items:center}
+.field svg{position:absolute;right:10px;width:15px;height:15px;color:var(--faint);pointer-events:none}
+select,.search input{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:9px;
+  padding:9px 32px 9px 12px;font-size:13px;font-family:inherit;appearance:none;cursor:pointer;transition:border-color .15s var(--ease)}
+select:hover,.search input:hover{border-color:var(--faint)}
+select:focus,.search input:focus{outline:none;border-color:var(--accent)}
+.search{flex:1;min-width:240px}
+.search input{width:100%;cursor:text}
+main{max-width:1400px;margin:20px auto 60px;padding:0 24px}
+.result-count{color:var(--muted);font-size:12.5px;margin-bottom:14px}
+.school-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow)}
+.school-head{padding:14px 18px;background:var(--surface-2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:background .15s var(--ease)}
+.school-head:hover{background:#e6e5de}
+.school-head-left{display:flex;flex-direction:column;gap:3px;min-width:0}
+.school-name{font-weight:600;font-size:15px}
+.school-code{font-size:.76rem;color:var(--faint)}
+.school-code .mono{color:var(--accent)}
+.school-meta{font-size:.75rem;color:var(--muted)}
+.school-head-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.pill{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:4px 11px;font-size:.72rem;color:var(--muted);white-space:nowrap}
+.chev{transition:transform .2s var(--ease);color:var(--faint)}
+.school-card.open .chev{transform:rotate(180deg)}
+.school-body{padding:0 18px;max-height:0;overflow:hidden;transition:max-height .25s var(--ease)}
+.school-card.open .school-body{max-height:none;padding:4px 18px 18px}
+.wo-block{margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed var(--line)}
+.wo-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.wo-title{font-size:.78rem;color:var(--muted);margin-bottom:2px}
+.wo-title .mono{color:var(--fg)}
+.wo-meta{font-size:.73rem;color:var(--faint);margin-bottom:10px}
+.area-block{margin-bottom:14px;padding:12px;background:var(--bg);border:1px solid var(--line-soft);border-radius:10px}
+.area-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.area-name{font-size:.85rem;font-weight:600}
+.area-tag{font-size:.68rem;padding:2px 8px;border-radius:20px;border:1px solid currentColor;opacity:.9}
+.area-finding{font-size:.8rem;color:var(--fg);margin-bottom:6px;background:#fdf3e3;border:1px solid #f0dcb4;padding:6px 10px;border-radius:6px}
+.area-remarks{font-size:.78rem;color:var(--muted);margin-bottom:8px;white-space:pre-line}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.thumb{width:88px;height:88px;border-radius:8px;overflow:hidden;border:1px solid var(--line);cursor:pointer;position:relative;background:var(--surface-2)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s var(--ease)}
+.thumb:hover img{transform:scale(1.06)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;z-index:50}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:78vh;border-radius:6px}
+.lightbox-caption{color:#f0efe8;text-align:center;max-width:640px;font-size:.9rem;line-height:1.5}
+.lightbox-close{position:absolute;top:18px;left:18px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:18px}
+.no-results{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+.updated-note{color:var(--faint);font-size:11.5px;margin-top:10px}
+@media (max-width:640px){ .head-inner,main{padding-left:14px;padding-right:14px} .kpi{min-width:88px;padding:8px 10px} .kpi .val{font-size:16px} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div class="title-row">
+      <h1>سجل صور تفتيش المدارس</h1>
+      <span class="subtitle">Inspection Photo Log</span>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="filters">
+      <div class="field search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="search" placeholder="ابحث باسم المدرسة، أو الرقم الوزاري، أو الموقع، أو الحي...">
+      </div>
+      <div class="field"><select id="areaFilter"><option value="">كل التصنيفات</option></select></div>
+      <div class="field"><select id="regionFilter"><option value="">كل المناطق</option></select></div>
+    </div>
+    <div class="updated-note" id="updatedNote"></div>
+  </div>
+</header>
+
+<main>
+  <div class="result-count" id="resultCount"></div>
+  <div id="listRoot"></div>
+</main>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img id="lightboxImg" src="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+let schools = {};
+const AREA_COLORS = ['#2f6fed','#8b4fe0','#c9761a','#0d9488','#c23670','#3f9d33','#b7900a'];
+const areaColorMap = {};
+function colorFor(areaKey){
+  if(!areaColorMap[areaKey]) areaColorMap[areaKey] = AREA_COLORS[Object.keys(areaColorMap).length % AREA_COLORS.length];
+  return areaColorMap[areaKey];
+}
+
+function fmtDate(iso){
+  if(!iso) return '';
+  try{ return new Date(iso).toLocaleDateString('ar-SA',{year:'numeric',month:'short',day:'numeric'}); }catch(e){ return String(iso).slice(0,10); }
+}
+
+Promise.all([
+  fetch('schools-data.json').then(r=>r.json()),
+  fetch('progress.json?t=' + Date.now()).then(r=>r.ok?r.json():[]).catch(()=>[])
+]).then(([data, progress])=>{
+  schools = data;
+  buildFilters();
+  renderKpis();
+  const last = progress && progress.length ? progress[progress.length-1] : null;
+  document.getElementById('updatedNote').textContent = last ? ('آخر تحديث: ' + last.time) : '';
+  render();
+});
+
+function buildFilters(){
+  const areas = new Set(), regions = new Set();
+  Object.values(schools).forEach(s=>{
+    Object.values(s.workOrders||{}).forEach(wo=>{
+      Object.entries(wo.sections||{}).forEach(([code, info])=>{
+        areas.add((info.name_ar || info.name_en || code));
+      });
+    });
+    if(s.site) regions.add(s.site);
+  });
+  const areaSel = document.getElementById('areaFilter');
+  [...areas].sort().forEach(a=>{
+    const o = document.createElement('option'); o.value = a; o.textContent = a; areaSel.appendChild(o);
+  });
+  const regionSel = document.getElementById('regionFilter');
+  [...regions].sort().forEach(r=>{
+    const o = document.createElement('option'); o.value = r; o.textContent = r; regionSel.appendChild(o);
+  });
+  areaSel.addEventListener('change', render);
+  regionSel.addEventListener('change', render);
+}
+
+function renderKpis(){
+  let woCount=0, photoCount=0, areaSet=new Set();
+  Object.values(schools).forEach(s=>{
+    Object.values(s.workOrders||{}).forEach(wo=>{
+      woCount++;
+      Object.values(wo.photos_by_area||{}).forEach(list=>{ photoCount += list.length; });
+      Object.keys(wo.sections||{}).forEach(k=>areaSet.add(k));
+    });
+  });
+  const kpis = [
+    ['مدرسة', Object.keys(schools).length],
+    ['أمر شغل', woCount],
+    ['صورة', photoCount],
+    ['تصنيف ملاحظة', areaSet.size]
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(([lbl,val])=>
+    '<div class="kpi"><div class="val mono">' + val.toLocaleString('ar-EG') + '</div><div class="lbl">' + lbl + '</div></div>'
+  ).join('');
+}
+
+function render(){
+  const root = document.getElementById('listRoot');
+  const resultCount = document.getElementById('resultCount');
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const areaFilter = document.getElementById('areaFilter').value;
+  const regionFilter = document.getElementById('regionFilter').value;
+  root.innerHTML = '';
+
+  const entries = Object.entries(schools).filter(([code, school])=>{
+    if(regionFilter && school.site !== regionFilter) return false;
+    if(q){
+      const hit = school.name.toLowerCase().includes(q)
+        || String(code).toLowerCase().includes(q)
+        || String(school.ministry_id||'').toLowerCase().includes(q)
+        || String(school.site||'').toLowerCase().includes(q)
+        || String(school.neighbourhood||'').toLowerCase().includes(q);
+      if(!hit) return false;
+    }
+    if(areaFilter){
+      const hasArea = Object.values(school.workOrders||{}).some(wo =>
+        Object.values(wo.sections||{}).some(info => (info.name_ar||info.name_en) === areaFilter)
+      );
+      if(!hasArea) return false;
+    }
+    return true;
+  });
+
+  resultCount.textContent = (q||areaFilter||regionFilter) ? (entries.length.toLocaleString('ar-EG') + ' نتيجة من ' + Object.keys(schools).length.toLocaleString('ar-EG')) : (Object.keys(schools).length.toLocaleString('ar-EG') + ' مدرسة');
+
+  if(entries.length === 0){
+    root.innerHTML = '<div class="no-results">لا توجد نتائج مطابقة لبحثك</div>';
+    return;
+  }
+
+  entries.forEach(([code, school])=>{
+    const card = document.createElement('div');
+    card.className = 'school-card';
+
+    let woCount = Object.keys(school.workOrders||{}).length;
+    let photoCount = 0;
+    Object.values(school.workOrders||{}).forEach(wo=>Object.values(wo.photos_by_area||{}).forEach(l=>photoCount+=l.length));
+
+    const head = document.createElement('div');
+    head.className = 'school-head';
+    head.innerHTML =
+      '<div class="school-head-left">' +
+        '<div class="school-name">' + school.name + '</div>' +
+        '<div class="school-code">الرقم الوزاري: <span class="mono">' + (school.ministry_id || '—') + '</span> · كود الموقع: <span class="mono">' + code + '</span></div>' +
+        '<div class="school-meta">' + [school.site, school.neighbourhood].filter(Boolean).join(' — ') + '</div>' +
+      '</div>' +
+      '<div class="school-head-right">' +
+        '<span class="pill">' + woCount + ' أمر شغل</span>' +
+        '<span class="pill">' + photoCount + ' صورة</span>' +
+        '<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
+      '</div>';
+    head.addEventListener('click', ()=> card.classList.toggle('open'));
+
+    const body = document.createElement('div');
+    body.className = 'school-body';
+
+    Object.entries(school.workOrders||{}).forEach(([wo, data])=>{
+      const woBlock = document.createElement('div');
+      woBlock.className = 'wo-block';
+
+      const woTitle = document.createElement('div');
+      woTitle.className = 'wo-title';
+      woTitle.innerHTML = 'أمر شغل: <span class="mono">' + wo + '</span>' + (data.assignment_month ? ' — ' + data.assignment_month : '');
+      woBlock.appendChild(woTitle);
+
+      const woMeta = document.createElement('div');
+      woMeta.className = 'wo-meta';
+      const metaParts = [];
+      if (data.inspector_fullname) metaParts.push('المفتش: ' + data.inspector_fullname);
+      if (data.completion_date) metaParts.push('تاريخ الإنجاز: ' + fmtDate(data.completion_date));
+      if (data.overall_rating) metaParts.push('التقييم العام: ' + data.overall_rating);
+      woMeta.textContent = metaParts.join(' — ');
+      woBlock.appendChild(woMeta);
+
+      Object.entries(data.photos_by_area || {}).forEach(([area, photos])=>{
+        const info = (data.sections && data.sections[area]) || (data.findingsMap && data.findingsMap[area]) || {};
+        const areaLabel = info.name_ar || info.name_en || info.en || area;
+        if(areaFilter && areaLabel !== areaFilter) return;
+
+        const areaBlock = document.createElement('div');
+        areaBlock.className = 'area-block';
+        const color = colorFor(area);
+
+        const headRow = document.createElement('div');
+        headRow.className = 'area-head';
+        headRow.innerHTML =
+          '<span class="area-name">' + areaLabel + '</span>' +
+          '<span class="area-tag" style="color:' + color + '">' + photos.length + ' صورة</span>';
+        areaBlock.appendChild(headRow);
+
+        const findingText = info.finding_ar || info.findings || info.finding;
+        if(findingText){
+          const finding = document.createElement('div');
+          finding.className = 'area-finding';
+          finding.textContent = '📝 ' + findingText;
+          areaBlock.appendChild(finding);
+        }
+        if(info.overall_remarks){
+          const remarks = document.createElement('div');
+          remarks.className = 'area-remarks';
+          remarks.textContent = info.overall_remarks;
+          areaBlock.appendChild(remarks);
+        }
+
+        const thumbs = document.createElement('div');
+        thumbs.className = 'thumbs';
+        photos.forEach(p=>{
+          const t = document.createElement('div');
+          t.className = 'thumb';
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = p.url;
+          t.appendChild(img);
+          t.addEventListener('click', ()=>{
+            document.getElementById('lightboxImg').src = p.url;
+            document.getElementById('lightboxCaption').textContent = (areaLabel) + (findingText ? ' — ' + findingText : '') + (p.captured_at ? ' — ' + fmtDate(p.captured_at) : '');
+            document.getElementById('lightbox').classList.add('open');
+          });
+          thumbs.appendChild(t);
+        });
+        areaBlock.appendChild(thumbs);
+        woBlock.appendChild(areaBlock);
+      });
+
+      body.appendChild(woBlock);
+    });
+
+    card.appendChild(head);
+    card.appendChild(body);
+    root.appendChild(card);
+  });
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('lightbox').addEventListener('click', e=>{
+  if(e.target.id === 'lightbox' || e.target.id === 'lightboxClose') document.getElementById('lightbox').classList.remove('open');
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+});
+</script>
+</body>
+</html>
