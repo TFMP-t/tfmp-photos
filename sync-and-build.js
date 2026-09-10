@@ -1,20 +1,30 @@
 /**
- * سكريبت واحد بيعمل حاجتين ورا بعض:
+ * سكريبت واحد بيعمل 3 حاجات ورا بعض:
+ * 0) يسجل دخول لوحده على نظام TFMP بيوزر واسورد، ويجيب توكن جلسة جديد فريش
+ *    (مبقاش محتاج حد يجيب كوكي يدوي ويحدثه كل شهر)
  * 1) يسحب أي وورك أوردر جديد (زي server.js بالظبط) — بكل الحقول المتاحة في التقرير
  * 2) يبني الموقع الثابت جوه فولدر docs/ عشان GitHub Pages يعرضه
  *
- * ده بيشتغل لوحده من غير أي تدخل، عن طريق GitHub Actions كل 6 ساعات
+ * ده بيشتغل لوحده من غير أي تدخل، عن طريق GitHub Actions مرة كل يوم
  * مش محتاج أي سيرفر شغال، ومجاني 100%
  */
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
 
+const LOGIN_URL = 'https://tfmp.meem-edgenta.tech/api/v1/auth/login';
 const REAL_LIST_URL = 'https://tfmp.meem-edgenta.tech/api/v1/admin/work-orders';
 const REAL_REPORT_BASE = 'https://tfmp.meem-edgenta.tech/api/v1/admin/work-orders';
 
-// الكوكي بييجي من GitHub Secrets مش مكتوب هنا، عشان الأمان
-const SESSION_COOKIE = process.env.TFMP_SESSION_COOKIE;
+// اليوزر والباسورد بييجوا من GitHub Secrets مش مكتوبين هنا، عشان الأمان.
+// خليهم فاضيين هنا في الكود دايمًا، وحطهم في GitHub Secrets بس:
+//   TFMP_USERNAME  → مثلا mh.othman
+//   TFMP_PASSWORD  → الباسورد الجديد (بعد ما اتغيّر)
+const TFMP_USERNAME = process.env.TFMP_USERNAME || '';
+const TFMP_PASSWORD = process.env.TFMP_PASSWORD || '';
+
+// هيتحط فيه توكن الجلسة بعد تسجيل الدخول التلقائي
+let AUTH_HEADER = '';
 
 const DELAY_MS = 150;
 const CONCURRENCY = 4;
@@ -43,8 +53,31 @@ let schools = loadJson(SCHOOLS_FILE, {});
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+// بينادي API تسجيل الدخول بنفسه، ويجيب توكن جلسة جديد كل مرة السكريبت يشتغل
+async function loginAndGetToken() {
+  if (!TFMP_USERNAME || !TFMP_PASSWORD) {
+    throw new Error('لازم تحط TFMP_USERNAME و TFMP_PASSWORD في GitHub Secrets');
+  }
+  const res = await fetch(LOGIN_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ user_name: TFMP_USERNAME, password: TFMP_PASSWORD })
+  });
+  if (!res.ok) throw new Error(`فشل تسجيل الدخول: HTTP ${res.status}`);
+  const data = await res.json();
+  if (!data.access_token) throw new Error('تسجيل الدخول نجح لكن مفيش access_token في الرد');
+  AUTH_HEADER = `Bearer ${data.access_token}`;
+  console.log('✔ تسجيل دخول ناجح، توكن جديد جاهز');
+}
+
 async function apiGet(url) {
-  const res = await fetch(url, { headers: { 'Accept': 'application/json', 'Cookie': SESSION_COOKIE } });
+  const res = await fetch(url, {
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': AUTH_HEADER,
+      'Cookie': `tfmp_session=${AUTH_HEADER.replace('Bearer ', '')}`
+    }
+  });
   if (!res.ok) throw new Error(`HTTP ${res.status} على ${url}`);
   return res.json();
 }
@@ -393,10 +426,8 @@ function buildDocs() {
 }
 
 async function main() {
-  if (!SESSION_COOKIE) {
-    console.error('❌ لازم تحط TFMP_SESSION_COOKIE في GitHub Secrets');
-    process.exit(1);
-  }
+  console.log('↻ بيسجل دخول تلقائي...');
+  await loginAndGetToken();
   console.log('↻ بيسحب أي وورك أوردر جديد...');
   await runSync('current');
   console.log('↻ ببني الموقع...');
