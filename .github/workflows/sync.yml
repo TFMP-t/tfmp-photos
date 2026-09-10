@@ -1,18 +1,27 @@
 name: Sync TFMP Photos
 
 on:
-  # يشتغل لوحده كل يوم الساعة 6 الصبح (بتوقيت السعودية / جدة، UTC+3)
+  # يشتغل لوحده كل يوم من الأحد للخميس، الساعة 6 الصبح (بتوقيت السعودية / جدة، UTC+3)
+  # الجمعة والسبت إجازة، مفيش تشغيل تلقائي فيهم
   schedule:
-    - cron: '0 3 * * *'
-  # ده بيديك زرار "Run workflow" تدوس عليه يدوي لو عايز تسحب فورًا من غير ما تستنى الصبح
+    - cron: '0 3 * * 0-4'
+  # ده بيديك زرار "Run workflow" تدوس عليه يدوي لو عايز تسحب فورًا من غير ما تستنى
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# لو حصل تشغيل يدوي في نفس وقت التشغيل التلقائي، ده بيمنع اتنين يشتغلوا في نفس الوقت
+# ويسبب تعارض في رفع النتيجة على GitHub
+concurrency:
+  group: tfmp-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
+    # حد أقصى 5 ساعات ونص للتشغيل الواحد (جيت هاب بيوقف أي حاجة إجباريًا بعد 6 ساعات مهما حصل)
+    timeout-minutes: 330
     steps:
       - name: تنزيل نسخة من الـ repo
         uses: actions/checkout@v4
@@ -32,9 +41,23 @@ jobs:
         run: node sync-and-build.js
 
       - name: حفظ ورفع النتيجة
+        # if: always() يضمن إن أي حاجة اتسحبت تتحفظ وتترفع حتى لو حصلت مشكلة فوق
+        if: always()
         run: |
           git config user.name "tfmp-bot"
           git config user.email "actions@github.com"
           git add data/ docs/
-          git diff --staged --quiet || git commit -m "تحديث تلقائي للصور والداتا"
-          git push
+          if git diff --staged --quiet; then
+            echo "مفيش حاجة جديدة تتحفظ"
+          else
+            git commit -m "تحديث تلقائي للصور والداتا"
+            # محاولة الرفع لحد 3 مرات لو حصل عطل شبكة مؤقت
+            for i in 1 2 3; do
+              if git push; then
+                break
+              fi
+              echo "فشلت محاولة الرفع رقم $i، بيحاول تاني..."
+              git pull --rebase
+              sleep 5
+            done
+          fi
