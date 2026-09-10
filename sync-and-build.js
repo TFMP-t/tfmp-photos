@@ -36,7 +36,10 @@ const TFMP_PASSWORD = process.env.TFMP_PASSWORD || '';
 let AUTH_HEADER = '';
 
 const DELAY_MS = 250;
-const CONCURRENCY = 3;
+const CONCURRENCY = 6;
+// عدد الصور التي تُنزَّل بالتوازي داخل أمر الشغل الواحد. رقم معتدل يوازن بين
+// السرعة وعدم إغراق الخادم الذي يستضيف الصور بعدد ضخم من الطلبات في اللحظة نفسها
+const PHOTO_CONCURRENCY = 6;
 // إذا قلّت المساحة الفارغة على القرص في الـ runner عن هذا الحد، يتوقف النص البرمجي
 // فورًا عن سحب أي بيانات جديدة، ويحفظ ويرفع كل ما تم سحبه حتى تلك اللحظة، بدلًا من
 // الاستمرار حتى تتوقف بيئة التشغيل فجأة بسبب امتلاء القرص (وهذا سبب شائع لرسالة
@@ -363,7 +366,13 @@ async function processWorkOrder(item) {
     };
   });
 
+  // كل صور أمر الشغل الواحد تُنزَّل الآن بالتوازي (بحد أقصى PHOTO_CONCURRENCY في آن واحد)
+  // بدلًا من التتابع صورة بعد صورة — وهذا هو التعديل الأهم لتسريع عملية السحب،
+  // لأن التنزيل التتابعي مع تأخير ثابت بعد كل صورة كان يجعل أمر الشغل الواحد (لو فيه
+  // عشرات الصور) يستغرق وقتًا طويلًا دون داعٍ حقيقي. الصور تُنزَّل من رابط تخزين موقّع
+  // (signed_url) وليس من واجهة TFMP نفسها، فلا حاجة لنفس درجة التأنّي المطلوبة مع طلبات الـ API
   const localPhotosByArea = {};
+  const downloadTasks = [];
   for (const [areaCode, photos] of Object.entries(report.photos_by_area || {})) {
     localPhotosByArea[areaCode] = [];
     for (const p of photos) {
@@ -372,13 +381,6 @@ async function processWorkOrder(item) {
       const baseName = p.filename.replace(/\.[a-zA-Z0-9]+$/, '');
       const localRelPath = `${code}/${woNumber}_${baseName}.jpg`;
       const localFullPath = path.join(PHOTOS_DIR, localRelPath);
-      if (!fs.existsSync(localFullPath)) {
-        await downloadFile(p.signed_url, localFullPath);
-        // يُسجَّل المسار النسبي للصورة (من داخل docs/) لإضافتها بالاسم فقط
-        // في الرفع التدريجي التالي، بدلًا من فحص مجلد الصور بالكامل
-        newPhotoRelPaths.push(path.join('photos', localRelPath));
-        await sleep(DELAY_MS);
-      }
       localPhotosByArea[areaCode].push({
         filename: p.filename,
         // مسار نسبي (بدون شرطة مائلة في البداية) حتى يعمل الموقع بشكل صحيح
@@ -386,7 +388,19 @@ async function processWorkOrder(item) {
         url: `photos/${localRelPath}`,
         captured_at: p.captured_at
       });
+      if (!fs.existsSync(localFullPath)) {
+        downloadTasks.push({ url: p.signed_url, savePath: localFullPath, relPath: localRelPath });
+      }
     }
+  }
+  for (let i = 0; i < downloadTasks.length; i += PHOTO_CONCURRENCY) {
+    const batch = downloadTasks.slice(i, i + PHOTO_CONCURRENCY);
+    await Promise.all(batch.map(async (task) => {
+      await downloadFile(task.url, task.savePath);
+      // يُسجَّل المسار النسبي للصورة (من داخل docs/) لإضافتها بالاسم فقط
+      // في الرفع التدريجي التالي، بدلًا من فحص مجلد الصور بالكامل
+      newPhotoRelPaths.push(path.join('photos', task.relPath));
+    }));
   }
 
   schools[code].workOrders[woNumber] = {
