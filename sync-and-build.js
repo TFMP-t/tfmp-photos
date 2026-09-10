@@ -27,8 +27,8 @@ const TFMP_PASSWORD = process.env.TFMP_PASSWORD || '';
 // هيتحط فيه توكن الجلسة بعد تسجيل الدخول التلقائي
 let AUTH_HEADER = '';
 
-const DELAY_MS = 500;
-const CONCURRENCY = 2;
+const DELAY_MS = 250;
+const CONCURRENCY = 3;
 
 const DATA_DIR = path.join(__dirname, 'data');
 const PHOTOS_DIR = path.join(__dirname, 'photos');
@@ -104,10 +104,20 @@ function pushProgress() {
       fs.writeFileSync(path.join(DOCS_DIR, '.nojekyll'), '');
     }
     execSync('git add docs/progress.json docs/progress.html docs/.nojekyll', { cwd: __dirname });
-    execSync('git commit -m "تحديث تقدم السحب" -q --allow-empty-message', { cwd: __dirname });
-    execSync('git push -q', { cwd: __dirname });
+    execSync('git commit -m "تحديث تقدم السحب" -q', { cwd: __dirname, stdio: 'ignore' });
+    // محاولة الرفع لحد 3 مرات لو حصل عطل شبكة أو تعارض مؤقت
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        execSync('git push -q', { cwd: __dirname, stdio: 'ignore' });
+        break;
+      } catch (pushErr) {
+        if (attempt === 3) throw pushErr;
+        execSync('git pull --rebase -q', { cwd: __dirname, stdio: 'ignore' });
+      }
+    }
   } catch (e) {
-    console.error('⚠ فشل رفع صفحة المتابعة (مش مشكلة كبيرة، هيكمل السحب عادي):', e.message);
+    // مش مشكلة كبيرة — دي بس صفحة متابعة، السحب نفسه هيكمل عادي
+    console.error('⚠ فشل رفع صفحة المتابعة (هيكمل السحب عادي):', e.message);
   }
 }
 
@@ -143,24 +153,56 @@ async function loginAndGetToken() {
   console.log('✔ تسجيل دخول ناجح، توكن جديد جاهز');
 }
 
-async function apiGet(url) {
-  const res = await fetch(url, {
-    headers: {
-      'Accept': 'application/json',
-      'Authorization': AUTH_HEADER,
-      'Cookie': `tfmp_session=${AUTH_HEADER.replace('Bearer ', '')}`
+async function apiGet(url, attempt = 1) {
+  let res;
+  try {
+    res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': AUTH_HEADER,
+        'Cookie': `tfmp_session=${AUTH_HEADER.replace('Bearer ', '')}`
+      }
+    });
+  } catch (networkErr) {
+    // عطل شبكة مؤقت (مش رد من السيرفر خالص) — بيحاول تاني
+    if (attempt < 3) {
+      await sleep(1000 * attempt);
+      return apiGet(url, attempt + 1);
     }
-  });
+    throw networkErr;
+  }
+  // لو التصريح خلصت مدته أثناء السحب (سحب طويل)، بيسجل دخول تاني تلقائيًا ويكمل
+  if (res.status === 401 || res.status === 403) {
+    console.log('↻ التصريح انتهى، بيسجل دخول تاني...');
+    await loginAndGetToken();
+    return apiGet(url);
+  }
+  // أعطال مؤقتة من السيرفر (زحمة أو صيانة لحظية)
+  if (res.status === 429 || res.status >= 500) {
+    if (attempt < 3) {
+      await sleep(2000 * attempt);
+      return apiGet(url, attempt + 1);
+    }
+  }
   if (!res.ok) throw new Error(`HTTP ${res.status} على ${url}`);
   return res.json();
 }
 
-async function downloadFile(url, savePath) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`فشل تنزيل صورة: ${res.status}`);
-  const buffer = await res.buffer();
-  fs.mkdirSync(path.dirname(savePath), { recursive: true });
-  fs.writeFileSync(savePath, buffer);
+async function downloadFile(url, savePath, attempt = 1) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`فشل تنزيل صورة: ${res.status}`);
+    const buffer = await res.buffer();
+    fs.mkdirSync(path.dirname(savePath), { recursive: true });
+    fs.writeFileSync(savePath, buffer);
+  } catch (err) {
+    // لو المشكلة عطل شبكة مؤقت، بيحاول تاني لحد 3 مرات قبل ما يستسلم
+    if (attempt < 3) {
+      await sleep(1000 * attempt);
+      return downloadFile(url, savePath, attempt + 1);
+    }
+    throw err;
+  }
 }
 
 function currentMonth() {
@@ -261,6 +303,7 @@ async function runSync(scope) {
   const targetMonth = scope === 'current' ? currentMonth() : null;
   let page = 1;
   const limit = 100;
+  let lastPushTime = 0;
 
   while (true) {
     const url = `${REAL_LIST_URL}?page=${page}&limit=${limit}&order_by=assignment_month&order_dir=desc`;
@@ -301,7 +344,14 @@ async function runSync(scope) {
       }));
       saveJson(PROCESSED_FILE, processed);
       saveJson(SCHOOLS_FILE, schools);
-      pushProgress();
+      // رفع صفحة المتابعة على GitHub مش كل دفعة، بس كل 60 ثانية —
+      // عشان لو الآلاف من العمليات دي حصلت ورا بعض بسرعة، جيت هاب ممكن
+      // يعتبرها نشاط غير طبيعي ويوقف الرفع مؤقتًا (حماية زيادة الطلبات)
+      const now = Date.now();
+      if (now - lastPushTime > 60000) {
+        pushProgress();
+        lastPushTime = now;
+      }
       await sleep(DELAY_MS);
     }
 
@@ -310,6 +360,8 @@ async function runSync(scope) {
     page++;
     await sleep(DELAY_MS);
   }
+  // رفعة أخيرة تضمن إن آخر دفعة (اللي ممكن تكون أقل من 60 ثانية من اللي قبلها) اترفعت
+  pushProgress();
 }
 
 function copyDir(src, dest) {
@@ -495,14 +547,14 @@ document.getElementById('lightbox').addEventListener('click', e=> e.target.close
 }
 
 function buildDocs() {
-  fs.rmSync(DOCS_DIR, { recursive: true, force: true });
+  // ⚠️ مهم جدًا: متمسحش فولدر docs بالكامل هنا — لازم يفضل فيه صور المدارس
+  // اللي اترفعت في تشغيلات سابقة. بننسخ بس الصور الجديدة فوق القديمة (إضافة، مش استبدال)
   fs.mkdirSync(DOCS_DIR, { recursive: true });
   if (fs.existsSync(PHOTOS_DIR)) copyDir(PHOTOS_DIR, path.join(DOCS_DIR, 'photos'));
   fs.writeFileSync(path.join(DOCS_DIR, 'schools-data.json'), JSON.stringify(schools, null, 2));
   fs.writeFileSync(path.join(DOCS_DIR, 'index.html'), buildStaticViewer());
   // GitHub Pages محتاج الملف ده عشان يعرف يعرض فولدر اسمه زي مجلد الصور من غير مشاكل
   fs.writeFileSync(path.join(DOCS_DIR, '.nojekyll'), '');
-  // نرجّع صفحة المتابعة تاني بعد ما اتمسحت مع باقي فولدر docs
   fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progressLog, null, 2));
   writeProgressPage();
 }
@@ -512,10 +564,19 @@ async function main() {
     execSync('git config user.name "tfmp-bot"', { cwd: __dirname });
     execSync('git config user.email "actions@github.com"', { cwd: __dirname });
   } catch (e) {}
-  console.log('↻ بيسجل دخول تلقائي...');
-  await loginAndGetToken();
-  console.log('↻ بيسحب أي وورك أوردر جديد...');
-  await runSync('current');
+
+  try {
+    console.log('↻ بيسجل دخول تلقائي...');
+    await loginAndGetToken();
+    console.log('↻ بيسحب أي وورك أوردر جديد...');
+    await runSync('current');
+  } catch (err) {
+    // لو حصلت مشكلة كبيرة أوقفت السحب بالكامل، منعملش كراش —
+    // نبني بأي حاجة اتسحبت لحد دلوقتي، عشان الشغل ميضيعش
+    console.error('⚠ توقف السحب بسبب مشكلة:', err.message);
+    console.error('↻ بس هيبني الموقع بأي حاجة اتسحبت لحد دلوقتي');
+  }
+
   console.log('↻ ببني الموقع...');
   buildDocs();
   console.log('✔ خلص. عدد المدارس:', Object.keys(schools).length);
