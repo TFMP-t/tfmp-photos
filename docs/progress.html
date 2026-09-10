@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متابعة السحب لحظة بلحظة</title>
+<style>
+  body{font-family:Tahoma,'Segoe UI',sans-serif;background:#f6f4ee;color:#1c2321;margin:0;padding:20px}
+  h1{font-size:1.3rem}
+  #count{color:#7a7568;margin-bottom:14px}
+  .row{background:#fff;border:1px solid #dcd7c9;border-radius:6px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between}
+  .row .time{color:#7a7568;font-size:.8rem}
+</style>
+</head>
+<body>
+<h1>سجل السحب — آخر المدارس التي تم سحبها</h1>
+<div id="count">يتحدَّث تلقائيًا كل 10 ثوانٍ...</div>
+<div id="list"></div>
+<script>
+async function load(){
+  try{
+    const res = await fetch('progress.json?t=' + Date.now());
+    const data = await res.json();
+    document.getElementById('count').textContent = 'عدد أوامر الشغل التي تم سحبها حتى الآن: ' + data.length;
+    const list = document.getElementById('list');
+    list.innerHTML = '';
+    data.slice().reverse().slice(0, 200).forEach(item=>{
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = '<span>' + item.name + ' — ' + item.wo + '</span><span class="time">' + item.time + '</span>';
+      list.appendChild(row);
+    });
+  }catch(e){}
+}
+load();
+setInterval(load, 10000);
+</script>
+</body>
+</html>
