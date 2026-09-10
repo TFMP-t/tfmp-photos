@@ -40,6 +40,9 @@ const PROGRESS_FILE = path.join(DOCS_DIR, 'progress.json');
 fs.mkdirSync(DATA_DIR, { recursive: true });
 fs.mkdirSync(PHOTOS_DIR, { recursive: true });
 fs.mkdirSync(DOCS_DIR, { recursive: true });
+// لازم الملف ده يتكتب من أول لحظة، عشان GitHub Pages متحاولش تعالج الموقع
+// بمحرك Jekyll أثناء السحب (قبل ما نبني index.html الكامل في الآخر)
+fs.writeFileSync(path.join(DOCS_DIR, '.nojekyll'), '');
 
 // قايمة "آخر المدارس اللي اتسحبت"، بتتحدث وترفع أول بأول أثناء السحب
 let progressLog = loadJsonSafe(PROGRESS_FILE, []);
@@ -97,7 +100,10 @@ function pushProgress() {
   try {
     fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progressLog, null, 2));
     writeProgressPage();
-    execSync('git add docs/progress.json docs/progress.html', { cwd: __dirname });
+    if (!fs.existsSync(path.join(DOCS_DIR, '.nojekyll'))) {
+      fs.writeFileSync(path.join(DOCS_DIR, '.nojekyll'), '');
+    }
+    execSync('git add docs/progress.json docs/progress.html docs/.nojekyll', { cwd: __dirname });
     execSync('git commit -m "تحديث تقدم السحب" -q --allow-empty-message', { cwd: __dirname });
     execSync('git push -q', { cwd: __dirname });
   } catch (e) {
