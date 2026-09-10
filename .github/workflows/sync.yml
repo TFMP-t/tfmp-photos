@@ -27,7 +27,8 @@ jobs:
 
       - name: تشغيل سكريبت السحب والبناء
         env:
-          TFMP_SESSION_COOKIE: ${{ secrets.TFMP_SESSION_COOKIE }}
+          TFMP_USERNAME: ${{ secrets.TFMP_USERNAME }}
+          TFMP_PASSWORD: ${{ secrets.TFMP_PASSWORD }}
         run: node sync-and-build.js
 
       - name: حفظ ورفع النتيجة
