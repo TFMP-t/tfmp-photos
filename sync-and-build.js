@@ -11,6 +11,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const LOGIN_URL = 'https://tfmp.meem-edgenta.tech/api/v1/auth/login';
 const REAL_LIST_URL = 'https://tfmp.meem-edgenta.tech/api/v1/admin/work-orders';
@@ -26,17 +27,83 @@ const TFMP_PASSWORD = process.env.TFMP_PASSWORD || '';
 // هيتحط فيه توكن الجلسة بعد تسجيل الدخول التلقائي
 let AUTH_HEADER = '';
 
-const DELAY_MS = 150;
-const CONCURRENCY = 4;
+const DELAY_MS = 500;
+const CONCURRENCY = 2;
 
 const DATA_DIR = path.join(__dirname, 'data');
 const PHOTOS_DIR = path.join(__dirname, 'photos');
 const DOCS_DIR = path.join(__dirname, 'docs');
 const PROCESSED_FILE = path.join(DATA_DIR, 'processed.json');
 const SCHOOLS_FILE = path.join(DATA_DIR, 'schools.json');
+const PROGRESS_FILE = path.join(DOCS_DIR, 'progress.json');
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 fs.mkdirSync(PHOTOS_DIR, { recursive: true });
+fs.mkdirSync(DOCS_DIR, { recursive: true });
+
+// قايمة "آخر المدارس اللي اتسحبت"، بتتحدث وترفع أول بأول أثناء السحب
+let progressLog = loadJsonSafe(PROGRESS_FILE, []);
+
+function loadJsonSafe(file, fallback) {
+  try {
+    if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (e) {}
+  return fallback;
+}
+
+function writeProgressPage() {
+  fs.writeFileSync(path.join(DOCS_DIR, 'progress.html'), `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متابعة السحب لحظة بلحظة</title>
+<style>
+  body{font-family:Tahoma,'Segoe UI',sans-serif;background:#f6f4ee;color:#1c2321;margin:0;padding:20px}
+  h1{font-size:1.3rem}
+  #count{color:#7a7568;margin-bottom:14px}
+  .row{background:#fff;border:1px solid #dcd7c9;border-radius:6px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between}
+  .row .time{color:#7a7568;font-size:.8rem}
+</style>
+</head>
+<body>
+<h1>سجل السحب — آخر المدارس اللي اتسحبت</h1>
+<div id="count">بيتحدث لوحده كل 10 ثواني...</div>
+<div id="list"></div>
+<script>
+async function load(){
+  try{
+    const res = await fetch('progress.json?t=' + Date.now());
+    const data = await res.json();
+    document.getElementById('count').textContent = 'عدد أوامر الشغل اللي اتسحبت لحد دلوقتي: ' + data.length;
+    const list = document.getElementById('list');
+    list.innerHTML = '';
+    data.slice().reverse().slice(0, 200).forEach(item=>{
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = '<span>' + item.name + ' — ' + item.wo + '</span><span class="time">' + item.time + '</span>';
+      list.appendChild(row);
+    });
+  }catch(e){}
+}
+load();
+setInterval(load, 10000);
+</script>
+</body>
+</html>`);
+}
+
+function pushProgress() {
+  try {
+    fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progressLog, null, 2));
+    writeProgressPage();
+    execSync('git add docs/progress.json docs/progress.html', { cwd: __dirname });
+    execSync('git commit -m "تحديث تقدم السحب" -q --allow-empty-message', { cwd: __dirname });
+    execSync('git push -q', { cwd: __dirname });
+  } catch (e) {
+    console.error('⚠ فشل رفع صفحة المتابعة (مش مشكلة كبيرة، هيكمل السحب عادي):', e.message);
+  }
+}
 
 function loadJson(file, fallback) {
   try {
@@ -217,12 +284,18 @@ async function runSync(scope) {
         try {
           await processWorkOrder(item);
           console.log(`✔ ${item.work_order_number}`);
+          progressLog.push({
+            name: item.primary_school_name || item.location_name || item.work_order_number,
+            wo: item.work_order_number,
+            time: new Date().toLocaleString('ar-EG')
+          });
         } catch (err) {
           console.error(`❌ فشل ${item.work_order_number}:`, err.message);
         }
       }));
       saveJson(PROCESSED_FILE, processed);
       saveJson(SCHOOLS_FILE, schools);
+      pushProgress();
       await sleep(DELAY_MS);
     }
 
@@ -423,9 +496,16 @@ function buildDocs() {
   fs.writeFileSync(path.join(DOCS_DIR, 'index.html'), buildStaticViewer());
   // GitHub Pages محتاج الملف ده عشان يعرف يعرض فولدر اسمه زي مجلد الصور من غير مشاكل
   fs.writeFileSync(path.join(DOCS_DIR, '.nojekyll'), '');
+  // نرجّع صفحة المتابعة تاني بعد ما اتمسحت مع باقي فولدر docs
+  fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progressLog, null, 2));
+  writeProgressPage();
 }
 
 async function main() {
+  try {
+    execSync('git config user.name "tfmp-bot"', { cwd: __dirname });
+    execSync('git config user.email "actions@github.com"', { cwd: __dirname });
+  } catch (e) {}
   console.log('↻ بيسجل دخول تلقائي...');
   await loginAndGetToken();
   console.log('↻ بيسحب أي وورك أوردر جديد...');
