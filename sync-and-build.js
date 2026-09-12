@@ -558,11 +558,13 @@ body{background:
 header{position:sticky;top:58px;z-index:30;background:rgba(238,243,247,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .head-inner{max-width:1320px;margin:0 auto;padding:18px 24px 16px}
 
-.kpis{display:flex;gap:10px;flex-wrap:wrap}
-.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:12px 16px;min-width:118px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
-.kpi::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--teal)}
-.kpi .val{font-size:21px;font-weight:800;line-height:1.1;letter-spacing:-.01em;color:var(--navy)}
-.kpi .lbl{color:var(--muted);font-size:11px;margin-top:4px;font-weight:500}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;display:flex;align-items:center;gap:11px}
+.kpi::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--kpi-color,var(--teal))}
+.kpi-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--kpi-color-soft,var(--accent-soft));color:var(--kpi-color,var(--teal))}
+.kpi-text{min-width:0}
+.kpi .val{font-size:19px;font-weight:800;line-height:1.15;letter-spacing:-.01em;color:var(--navy)}
+.kpi .lbl{color:var(--muted);font-size:10.5px;margin-top:2px;font-weight:600;white-space:nowrap}
 
 .filters{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
 .field{position:relative;display:flex;align-items:center}
@@ -587,7 +589,9 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .school-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
 
 .sc-top{display:flex;align-items:flex-start;gap:12px;margin-inline-start:4px}
-.school-icon{width:42px;height:42px;border-radius:12px;background:var(--grad-nav);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:15px;box-shadow:0 3px 10px rgba(13,132,156,.35)}
+.school-icon{width:42px;height:42px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:19px;box-shadow:0 3px 10px rgba(13,132,156,.30)}
+.school-icon.ok{background:linear-gradient(135deg,#0d2f40,#0d849c)}
+.school-icon.warn{background:linear-gradient(135deg,#8a4a12,#7d1f2c);box-shadow:0 3px 10px rgba(125,31,44,.30)}
 .sc-text{min-width:0;flex:1}
 .school-name{font-weight:700;font-size:14.5px;letter-spacing:-.005em;line-height:1.35}
 .school-code{font-size:.72rem;color:var(--faint);margin-top:3px}
@@ -601,9 +605,8 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .stat-chip.flag{background:var(--bad-soft);color:var(--bad);border-color:rgba(125,31,44,.2)}
 .stat-chip.ok{background:var(--good-soft);color:var(--good);border-color:rgba(6,106,82,.2)}
 
-.sc-foot{display:flex;justify-content:space-between;align-items:center;margin-inline-start:4px;padding-top:10px;border-top:1px dashed var(--line)}
-.sc-foot .mono{color:var(--muted)}
-.sc-date{font-size:.7rem;color:var(--faint)}
+.sc-foot{display:flex;justify-content:flex-end;align-items:center;margin-inline-start:4px;padding-top:10px;border-top:1px dashed var(--line)}
+.sc-date{font-size:.72rem;color:var(--faint);font-weight:600}
 
 .no-results{text-align:center;color:var(--muted);padding:60px 0;font-size:14px;grid-column:1/-1}
 
@@ -637,7 +640,7 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .lightbox img{max-width:92vw;max-height:78vh;border-radius:6px}
 .lightbox-caption{color:#f0efe8;text-align:center;max-width:640px;font-size:.9rem;line-height:1.5}
 .lightbox-close{position:absolute;top:18px;left:18px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:18px}
-@media (max-width:640px){ .head-inner,main{padding-left:14px;padding-right:14px} .kpi{min-width:92px;padding:9px 12px} .kpi .val{font-size:17px} }
+@media (max-width:640px){ .head-inner,main{padding-left:14px;padding-right:14px} .kpis{grid-template-columns:repeat(2,1fr)} .kpi .val{font-size:17px} }
 </style>
 </head>
 <body>
@@ -667,12 +670,14 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <input id="search" placeholder="ابحث باسم المدرسة، أو الرقم الوزاري، أو الموقع، أو الحي...">
       </div>
-      <div class="field"><select id="areaFilter"><option value="">جميع التصنيفات</option></select></div>
       <div class="field"><select id="regionFilter"><option value="">جميع المناطق</option></select></div>
-      <div class="field"><select id="flagFilter">
-        <option value="">جميع المدارس</option>
-        <option value="yes">بها ملاحظات فقط</option>
-        <option value="no">بلا ملاحظات فقط</option>
+      <div class="field"><select id="ratingFilter"><option value="">جميع التقييمات</option></select></div>
+      <div class="field"><select id="sortSelect">
+        <option value="date_desc">الأحدث إنجازًا أولًا</option>
+        <option value="date_asc">الأقدم إنجازًا أولًا</option>
+        <option value="findings_first">الأكثر ملاحظات أولًا</option>
+        <option value="photos_desc">الأكثر صورًا أولًا</option>
+        <option value="name_asc">الاسم (أ – ي)</option>
       </select></div>
       <button class="clear-btn" id="clearBtn" type="button">✕ مسح الفلاتر</button>
     </div>
@@ -718,23 +723,22 @@ function fmtDate(iso){
 function fmtNum(n){
   try{ return Number(n).toLocaleString('en-US'); }catch(e){ return String(n); }
 }
-function initials(name){
-  return (name||'').trim().slice(0,2);
-}
 
 // يحسب كل الإحصاءات اللازمة لعرض مدرسة واحدة: عدد أوامر العمل، عدد الصور،
-// تاريخ آخر إنجاز، ووجود ملاحظات من عدمه في أي قسم من أقسامها
+// تاريخ آخر إنجاز، وجود ملاحظات من عدمه في أي قسم من أقسامها، وكل التقييمات العامة المسجَّلة لها
 function schoolStats(school){
   const orders = Object.entries(school.workOrders || {});
   let photoCount = 0, hasFindings = false, lastDate = null;
+  const ratings = new Set();
   orders.forEach(([wo, data])=>{
     Object.values(data.photos_by_area || {}).forEach(list=>{ photoCount += list.length; });
     Object.values(data.sections || {}).forEach(info=>{
       if(info.finding_ar || info.findings) hasFindings = true;
     });
     if(data.completion_date && (!lastDate || data.completion_date > lastDate)) lastDate = data.completion_date;
+    if(data.overall_rating) ratings.add(data.overall_rating);
   });
-  return { woCount: orders.length, photoCount, hasFindings, lastDate };
+  return { woCount: orders.length, photoCount, hasFindings, lastDate, ratings };
 }
 
 Promise.all([
@@ -749,36 +753,32 @@ Promise.all([
 });
 
 function buildFilters(){
-  const areas = new Set(), regions = new Set();
+  const regions = new Set(), ratings = new Set();
   Object.values(schools).forEach(s=>{
-    Object.values(s.workOrders||{}).forEach(wo=>{
-      Object.entries(wo.sections||{}).forEach(([code, info])=>{
-        areas.add((info.name_ar || info.name_en || code));
-      });
-    });
     if(s.site) regions.add(s.site);
-  });
-  const areaSel = document.getElementById('areaFilter');
-  [...areas].sort().forEach(a=>{
-    const o = document.createElement('option'); o.value = a; o.textContent = a; areaSel.appendChild(o);
+    schoolStats(s).ratings.forEach(r => ratings.add(r));
   });
   const regionSel = document.getElementById('regionFilter');
   [...regions].sort().forEach(r=>{
     const o = document.createElement('option'); o.value = r; o.textContent = r; regionSel.appendChild(o);
   });
-  areaSel.addEventListener('change', render);
+  const ratingSel = document.getElementById('ratingFilter');
+  [...ratings].sort().forEach(r=>{
+    const o = document.createElement('option'); o.value = r; o.textContent = r; ratingSel.appendChild(o);
+  });
   regionSel.addEventListener('change', render);
-  document.getElementById('flagFilter').addEventListener('change', render);
+  ratingSel.addEventListener('change', render);
+  document.getElementById('sortSelect').addEventListener('change', render);
 }
 
 function filteredEntries(){
   const q = document.getElementById('search').value.trim().toLowerCase();
-  const areaFilter = document.getElementById('areaFilter').value;
   const regionFilter = document.getElementById('regionFilter').value;
-  const flagFilter = document.getElementById('flagFilter').value;
+  const ratingFilter = document.getElementById('ratingFilter').value;
 
   return Object.entries(schools).filter(([code, school])=>{
     if(regionFilter && school.site !== regionFilter) return false;
+    if(ratingFilter && !schoolStats(school).ratings.has(ratingFilter)) return false;
     if(q){
       const hit = (school.name||'').toLowerCase().includes(q)
         || String(code).toLowerCase().includes(q)
@@ -787,19 +787,35 @@ function filteredEntries(){
         || String(school.neighbourhood||'').toLowerCase().includes(q);
       if(!hit) return false;
     }
-    if(areaFilter){
-      const hasArea = Object.values(school.workOrders||{}).some(wo =>
-        Object.values(wo.sections||{}).some(info => (info.name_ar||info.name_en) === areaFilter)
-      );
-      if(!hasArea) return false;
-    }
-    if(flagFilter){
-      const stats = schoolStats(school);
-      if(flagFilter === 'yes' && !stats.hasFindings) return false;
-      if(flagFilter === 'no' && stats.hasFindings) return false;
-    }
     return true;
   });
+}
+
+// يرتب المدارس المعروضة حسب اختيار المستخدم من قائمة "ترتيب النتائج"،
+// بدلًا من فلاتر التصنيف والملاحظات التي كانت قليلة الفائدة عمليًا
+function sortEntries(entries){
+  const mode = document.getElementById('sortSelect').value;
+  const withStats = entries.map(e => [e[0], e[1], schoolStats(e[1])]);
+
+  withStats.sort((a, b) => {
+    const [, schoolA, statsA] = a;
+    const [, schoolB, statsB] = b;
+    switch(mode){
+      case 'date_asc':
+        return (statsA.lastDate || '').localeCompare(statsB.lastDate || '');
+      case 'findings_first':
+        return (statsB.hasFindings === statsA.hasFindings) ? 0 : (statsB.hasFindings ? 1 : -1);
+      case 'photos_desc':
+        return statsB.photoCount - statsA.photoCount;
+      case 'name_asc':
+        return (schoolA.name || '').localeCompare(schoolB.name || '', 'ar');
+      case 'date_desc':
+      default:
+        return (statsB.lastDate || '').localeCompare(statsA.lastDate || '');
+    }
+  });
+
+  return withStats.map(([code, school]) => [code, school]);
 }
 
 function renderKpis(entries){
@@ -811,21 +827,25 @@ function renderKpis(entries){
     if(stats.hasFindings) flaggedCount++;
   });
   const kpis = [
-    ['عدد المدارس', entries.length],
-    ['أوامر العمل', woCount],
-    ['عدد الصور', photoCount],
-    ['مدارس بها ملاحظات', flaggedCount]
+    ['🏫', 'عدد المدارس', entries.length, '#0d849c', '#e2f3f6'],
+    ['📄', 'أوامر العمل', woCount, '#0d2f40', '#e5edf0'],
+    ['📷', 'عدد الصور', photoCount, '#b08a4e', '#f8f1e6'],
+    ['⚠', 'مدارس بها ملاحظات', flaggedCount, '#7d1f2c', '#fdf0f2']
   ];
-  document.getElementById('kpis').innerHTML = kpis.map(([lbl,val])=>
-    '<div class="kpi"><div class="val mono">' + fmtNum(val) + '</div><div class="lbl">' + lbl + '</div></div>'
+  document.getElementById('kpis').innerHTML = kpis.map(([icon,lbl,val,color,colorSoft])=>
+    '<div class="kpi" style="--kpi-color:' + color + ';--kpi-color-soft:' + colorSoft + '">' +
+      '<div class="kpi-icon">' + icon + '</div>' +
+      '<div class="kpi-text"><div class="val mono">' + fmtNum(val) + '</div><div class="lbl">' + lbl + '</div></div>' +
+    '</div>'
   ).join('');
 }
 
 function render(){
   const root = document.getElementById('listRoot');
   const resultCount = document.getElementById('resultCount');
-  const entries = filteredEntries();
+  const entries = sortEntries(filteredEntries());
   const totalSchools = Object.keys(schools).length;
+
 
   resultCount.innerHTML = 'عدد النتائج: <span class="mono">' + fmtNum(entries.length) + '</span> من إجمالي <span class="mono">' + fmtNum(totalSchools) + '</span> مدرسة';
   renderKpis(entries);
@@ -841,10 +861,14 @@ function render(){
     const flagChip = stats.hasFindings
       ? '<span class="stat-chip flag">⚠ بها ملاحظات</span>'
       : '<span class="stat-chip ok">✓ لا توجد ملاحظات</span>';
+    // أيقونة الحالة: مؤشر بصري سريع يوضّح هل المدرسة تحتاج متابعة أم لا،
+    // بدلًا من عرض حرفين من اسم المدرسة (وهو مكرَّر مع الاسم المكتوب بجانبه أصلًا)
+    const statusIcon = stats.hasFindings ? '⚠' : '✓';
+    const statusClass = stats.hasFindings ? 'warn' : 'ok';
     return (
       '<div class="school-card" data-code="' + code.replace(/"/g,'&quot;') + '">' +
         '<div class="sc-top">' +
-          '<div class="school-icon">' + initials(school.name) + '</div>' +
+          '<div class="school-icon ' + statusClass + '">' + statusIcon + '</div>' +
           '<div class="sc-text">' +
             '<div class="school-name">' + (school.name || 'بلا اسم') + '</div>' +
             '<div class="school-code">الرقم الوزاري: <span class="mono">' + (school.ministry_id || '—') + '</span></div>' +
@@ -860,7 +884,6 @@ function render(){
           flagChip +
         '</div>' +
         '<div class="sc-foot">' +
-          '<span>آخر إنجاز</span>' +
           '<span class="sc-date mono">' + (stats.lastDate ? fmtDate(stats.lastDate) : '—') + '</span>' +
         '</div>' +
       '</div>'
@@ -955,9 +978,9 @@ document.addEventListener('keydown', e=>{
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('clearBtn').addEventListener('click', ()=>{
   document.getElementById('search').value = '';
-  document.getElementById('areaFilter').value = '';
   document.getElementById('regionFilter').value = '';
-  document.getElementById('flagFilter').value = '';
+  document.getElementById('ratingFilter').value = '';
+  document.getElementById('sortSelect').value = 'date_desc';
   render();
 });
 </script>
