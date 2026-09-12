@@ -417,7 +417,7 @@ async function processWorkOrder(item) {
     overall_rating_remarks: (report.overall_rating && report.overall_rating.remarks) || null,
     performance_ratings: (report.overall_rating && report.overall_rating.performance_ratings) || null,
     photos_by_area: localPhotosByArea,
-    // sections بيحتوي كل التفاصيل؛ findingsMap اتسابت لتوافق النسخة القديمة من الموقع
+    // يحتوي الحقل sections على كل التفاصيل؛ أما findingsMap فقد أُبقي عليه للتوافق مع النسخة القديمة من الموقع
     sections: sectionsMap,
     findingsMap: Object.fromEntries(
       Object.entries(sectionsMap).map(([k, v]) => [k, { en: v.name_en, finding: v.finding_ar || v.findings }])
@@ -517,92 +517,164 @@ function buildStaticViewer() {
 <title>سجل صور تفتيش المدارس</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f7f5; --surface:#ffffff; --surface-2:#f0f0ec; --line:#e2e1da; --line-soft:#ebeae3;
-  --fg:#1c1d1f; --muted:#5b5c63; --faint:#84858c; --accent:#2f6fed; --good:#1f9d63; --bad:#d3413a;
-  --shadow:0 1px 2px rgba(20,20,30,.05), 0 8px 24px rgba(20,20,30,.06); --radius:14px; --ease:cubic-bezier(.4,0,.2,1);
+  --bg:#eef3f7; --surface:#ffffff; --surface-2:#f7fafc; --line:#dbe7ee; --line-soft:#e6eef3;
+  --fg:#0c2330; --muted:#2c5468; --faint:#6d8794;
+  --accent:#0d849c; --accent-soft:#e2f3f6;
+  --good:#066a52; --good-soft:#edfaf5; --warn:#c07a14; --warn-soft:#fdf6ec; --bad:#7d1f2c; --bad-soft:#fdf0f2;
+  --brass:#b08a4e; --brass-soft:#f8f1e6;
+  --shadow-sm:0 1px 2px rgba(8,35,48,.04);
+  --shadow-md:0 1px 2px rgba(8,35,48,.04), 0 8px 24px -8px rgba(8,35,48,.10);
+  --shadow-hover:0 4px 10px rgba(8,35,48,.08), 0 16px 32px -8px rgba(8,35,48,.16);
+  --radius-lg:18px; --radius-md:12px; --radius-sm:8px;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --navy:#0d2f40; --teal:#0d849c; --teal-2:#16a4bf;
+  --grad-nav: linear-gradient(135deg, #0d2f40, #0d849c 70%, #16a4bf);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg);color:var(--fg);font-family:"IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.mono{font-family:"Fira Code",ui-monospace,monospace;font-feature-settings:"tnum"}
-header{position:sticky;top:0;z-index:30;background:rgba(247,247,245,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.head-inner{max-width:1400px;margin:0 auto;padding:16px 22px}
-.title-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-h1{margin:0;font-size:18px;font-weight:600;letter-spacing:-.01em}
-.subtitle{color:var(--faint);font-size:13px}
-.kpis{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:10px 14px;min-width:110px}
-.kpi .val{font-size:20px;font-weight:600;line-height:1.1}
-.kpi .lbl{color:var(--muted);font-size:11px;margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+body{background:
+  radial-gradient(1000px 500px at 95% -8%, rgba(13,132,156,.07), transparent 50%),
+  radial-gradient(800px 450px at -5% 105%, rgba(176,138,78,.06), transparent 48%),
+  var(--bg);
+  color:var(--fg);font-family:"IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono{font-family:"Fira Code",ui-monospace,monospace;font-feature-settings:"tnum";direction:ltr;unicode-bidi:isolate}
+
+.topbar{display:flex;align-items:stretch;gap:0;padding:0;background:var(--grad-nav);
+  box-shadow:0 4px 18px rgba(8,35,48,.18);position:sticky;top:0;z-index:100;flex-wrap:wrap;min-height:58px}
+.tb-ls{min-width:170px;display:flex;align-items:center;gap:10px;padding:0 18px;
+  background:linear-gradient(135deg, rgba(13,132,156,.14), rgba(13,132,156,.04));
+  border-left:1px solid rgba(13,132,156,.14)}
+.tb-tbc{display:flex;align-items:center;gap:14px;padding:0 18px}
+.tb-logo,.tb-tbc img{height:22px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0,0,0,.28));opacity:.92}
+.tb-divider{width:1px;align-self:center;height:22px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.22) 25%,rgba(255,255,255,.22) 75%,transparent);flex-shrink:0}
+.tb-title-wrap{flex:1;display:flex;align-items:center;gap:14px;padding:0 18px}
+.tb-title{color:#fff;font-weight:800;font-size:16px}
+.tb-sub{color:rgba(255,255,255,.65);font-size:11px;font-weight:500}
+@media (max-width:640px){ .tb-ls{min-width:auto;padding:0 10px} .tb-tbc,.tb-title-wrap{padding:0 10px;gap:8px} }
+
+header{position:sticky;top:58px;z-index:30;background:rgba(238,243,247,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.head-inner{max-width:1320px;margin:0 auto;padding:18px 24px 16px}
+
+.kpis{display:flex;gap:10px;flex-wrap:wrap}
+.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:12px 16px;min-width:118px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--teal)}
+.kpi .val{font-size:21px;font-weight:800;line-height:1.1;letter-spacing:-.01em;color:var(--navy)}
+.kpi .lbl{color:var(--muted);font-size:11px;margin-top:4px;font-weight:500}
+
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
 .field{position:relative;display:flex;align-items:center}
-.field svg{position:absolute;right:10px;width:15px;height:15px;color:var(--faint);pointer-events:none}
-select,.search input{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:9px;
-  padding:9px 32px 9px 12px;font-size:13px;font-family:inherit;appearance:none;cursor:pointer;transition:border-color .15s var(--ease)}
-select:hover,.search input:hover{border-color:var(--faint)}
-select:focus,.search input:focus{outline:none;border-color:var(--accent)}
+.field svg{position:absolute;right:11px;width:15px;height:15px;color:var(--faint);pointer-events:none}
+select,.search input{background:var(--surface);color:var(--fg);border:1.5px solid var(--line);border-radius:10px;
+  padding:10px 34px 10px 13px;font-size:13.5px;font-family:inherit;appearance:none;cursor:pointer;transition:all .15s var(--ease);box-shadow:var(--shadow-sm)}
+select:hover,.search input:hover{border-color:#9fb7c4}
+select:focus,.search input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--accent-soft)}
 .search{flex:1;min-width:240px}
 .search input{width:100%;cursor:text}
-main{max-width:1400px;margin:20px auto 60px;padding:0 24px}
-.result-count{color:var(--muted);font-size:12.5px;margin-bottom:14px}
-.school-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow)}
-.school-head{padding:14px 18px;background:var(--surface-2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:background .15s var(--ease)}
-.school-head:hover{background:#e6e5de}
-.school-head-left{display:flex;flex-direction:column;gap:3px;min-width:0}
-.school-name{font-weight:600;font-size:15px}
-.school-code{font-size:.76rem;color:var(--faint)}
-.school-code .mono{color:var(--accent)}
-.school-meta{font-size:.75rem;color:var(--muted)}
-.school-head-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.pill{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:4px 11px;font-size:.72rem;color:var(--muted);white-space:nowrap}
-.chev{transition:transform .2s var(--ease);color:var(--faint)}
-.school-card.open .chev{transform:rotate(180deg)}
-.school-body{padding:0 18px;max-height:0;overflow:hidden;transition:max-height .25s var(--ease)}
-.school-card.open .school-body{max-height:none;padding:4px 18px 18px}
-.wo-block{margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed var(--line)}
-.wo-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.wo-title{font-size:.78rem;color:var(--muted);margin-bottom:2px}
-.wo-title .mono{color:var(--fg)}
-.wo-meta{font-size:.73rem;color:var(--faint);margin-bottom:10px}
-.area-block{margin-bottom:14px;padding:12px;background:var(--bg);border:1px solid var(--line-soft);border-radius:10px}
-.area-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.area-name{font-size:.85rem;font-weight:600}
-.area-tag{font-size:.68rem;padding:2px 8px;border-radius:20px;border:1px solid currentColor;opacity:.9}
-.area-finding{font-size:.8rem;color:var(--fg);margin-bottom:6px;background:#fdf3e3;border:1px solid #f0dcb4;padding:6px 10px;border-radius:6px}
-.area-remarks{font-size:.78rem;color:var(--muted);margin-bottom:8px;white-space:pre-line}
+.clear-btn{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit}
+.clear-btn:hover{border-color:var(--bad);color:var(--bad)}
+.updated-note{color:var(--faint);font-size:11px;margin-top:10px}
+
+main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
+.result-count{color:var(--muted);font-size:12.5px;margin-bottom:16px;font-weight:500}
+.result-count .mono{color:var(--fg);font-weight:700}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.school-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);transition:box-shadow .2s var(--ease), transform .2s var(--ease);cursor:pointer;overflow:hidden;position:relative;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.school-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--grad-nav)}
+.school-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+
+.sc-top{display:flex;align-items:flex-start;gap:12px;margin-inline-start:4px}
+.school-icon{width:42px;height:42px;border-radius:12px;background:var(--grad-nav);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:15px;box-shadow:0 3px 10px rgba(13,132,156,.35)}
+.sc-text{min-width:0;flex:1}
+.school-name{font-weight:700;font-size:14.5px;letter-spacing:-.005em;line-height:1.35}
+.school-code{font-size:.72rem;color:var(--faint);margin-top:3px}
+.school-code .mono{color:var(--accent);font-weight:600}
+
+.sc-loc{display:flex;align-items:center;gap:5px;font-size:.76rem;color:var(--muted);margin-inline-start:4px}
+.sc-loc svg{width:13px;height:13px;color:var(--faint);flex-shrink:0}
+
+.sc-stats{display:flex;gap:8px;flex-wrap:wrap;margin-inline-start:4px}
+.stat-chip{display:flex;align-items:center;gap:5px;font-size:.71rem;font-weight:600;padding:4px 9px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line-soft);color:var(--muted)}
+.stat-chip.flag{background:var(--bad-soft);color:var(--bad);border-color:rgba(125,31,44,.2)}
+.stat-chip.ok{background:var(--good-soft);color:var(--good);border-color:rgba(6,106,82,.2)}
+
+.sc-foot{display:flex;justify-content:space-between;align-items:center;margin-inline-start:4px;padding-top:10px;border-top:1px dashed var(--line)}
+.sc-foot .mono{color:var(--muted)}
+.sc-date{font-size:.7rem;color:var(--faint)}
+
+.no-results{text-align:center;color:var(--muted);padding:60px 0;font-size:14px;grid-column:1/-1}
+
+.overlay{position:fixed;inset:0;background:rgba(8,20,28,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:200;overflow-y:auto}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--radius-lg);max-width:680px;width:100%;box-shadow:0 20px 60px rgba(8,35,48,.3);overflow:hidden}
+.modal-head{background:var(--grad-nav);padding:20px 24px;position:relative}
+.modal-head h2{color:#fff;margin:0;font-size:17px;font-weight:800}
+.modal-head .sub{color:rgba(255,255,255,.7);font-size:12px;margin-top:4px}
+.modal-close{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:15px;line-height:1}
+.modal-body{padding:20px 24px;max-height:70vh;overflow-y:auto}
+.wo-block{margin-bottom:14px;padding:14px 16px;border:1px solid var(--line-soft);border-radius:var(--radius-md);background:var(--surface-2)}
+.wo-block:last-child{margin-bottom:0}
+.wo-title{font-size:.8rem;color:var(--muted);margin-bottom:2px;font-weight:600}
+.wo-title .mono{color:var(--fg);font-weight:700}
+.wo-meta{font-size:.73rem;color:var(--faint);margin-bottom:12px}
+.area-block{margin-bottom:10px;padding:13px 14px;background:var(--surface);border:1px solid var(--line-soft);border-radius:10px}
+.area-block:last-child{margin-bottom:0}
+.area-head{display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap}
+.area-name{font-size:.85rem;font-weight:700}
+.area-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--accent-soft);border:1px solid currentColor;opacity:.95}
+.area-finding{font-size:.79rem;color:var(--fg);margin-bottom:8px;background:var(--warn-soft);border:1px solid #f2dfae;padding:8px 11px;border-radius:8px;line-height:1.55}
+.area-remarks{font-size:.78rem;color:var(--muted);margin-bottom:9px;white-space:pre-line;line-height:1.6}
 .thumbs{display:flex;flex-wrap:wrap;gap:8px}
-.thumb{width:88px;height:88px;border-radius:8px;overflow:hidden;border:1px solid var(--line);cursor:pointer;position:relative;background:var(--surface-2)}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s var(--ease)}
-.thumb:hover img{transform:scale(1.06)}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;z-index:50}
+.thumb{width:78px;height:78px;border-radius:10px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--surface-2);box-shadow:var(--shadow-sm);transition:transform .15s var(--ease)}
+.thumb:hover{transform:translateY(-2px)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;z-index:300}
 .lightbox.open{display:flex}
 .lightbox img{max-width:92vw;max-height:78vh;border-radius:6px}
 .lightbox-caption{color:#f0efe8;text-align:center;max-width:640px;font-size:.9rem;line-height:1.5}
 .lightbox-close{position:absolute;top:18px;left:18px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:18px}
-.no-results{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
-.updated-note{color:var(--faint);font-size:11.5px;margin-top:10px}
-@media (max-width:640px){ .head-inner,main{padding-left:14px;padding-right:14px} .kpi{min-width:88px;padding:8px 10px} .kpi .val{font-size:16px} }
+@media (max-width:640px){ .head-inner,main{padding-left:14px;padding-right:14px} .kpi{min-width:92px;padding:9px 12px} .kpi .val{font-size:17px} }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="tb-ls">
+    <img class="tb-logo" src="https://landsterling.sa/wp-content/uploads/2024/08/LS-Logo-White-English.png" alt="Land Sterling">
+  </div>
+  <div class="tb-divider"></div>
+  <div class="tb-tbc">
+    <img src="https://tbc.sa/Portals/0/tbcnew-01.svg?ver=2019-08-07-114519-183" alt="TBC">
+    <div class="tb-divider"></div>
+  </div>
+  <div class="tb-title-wrap">
+    <div>
+      <div class="tb-title">🏫 سجل صور تفتيش المدارس</div>
+      <div class="tb-sub">Inspection Photo Log</div>
+    </div>
+  </div>
+</div>
+
 <header>
   <div class="head-inner">
-    <div class="title-row">
-      <h1>سجل صور تفتيش المدارس</h1>
-      <span class="subtitle">Inspection Photo Log</span>
-    </div>
     <div class="kpis" id="kpis"></div>
     <div class="filters">
       <div class="field search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <input id="search" placeholder="ابحث باسم المدرسة، أو الرقم الوزاري، أو الموقع، أو الحي...">
       </div>
-      <div class="field"><select id="areaFilter"><option value="">كل التصنيفات</option></select></div>
-      <div class="field"><select id="regionFilter"><option value="">كل المناطق</option></select></div>
+      <div class="field"><select id="areaFilter"><option value="">جميع التصنيفات</option></select></div>
+      <div class="field"><select id="regionFilter"><option value="">جميع المناطق</option></select></div>
+      <div class="field"><select id="flagFilter">
+        <option value="">جميع المدارس</option>
+        <option value="yes">بها ملاحظات فقط</option>
+        <option value="no">بلا ملاحظات فقط</option>
+      </select></div>
+      <button class="clear-btn" id="clearBtn" type="button">✕ مسح الفلاتر</button>
     </div>
     <div class="updated-note" id="updatedNote"></div>
   </div>
@@ -610,8 +682,19 @@ main{max-width:1400px;margin:20px auto 60px;padding:0 24px}
 
 <main>
   <div class="result-count" id="resultCount"></div>
-  <div id="listRoot"></div>
+  <div class="grid" id="listRoot"></div>
 </main>
+
+<div class="overlay" id="detailOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" id="modalClose" type="button">✕</button>
+      <h2 id="mName"></h2>
+      <div class="sub" id="mSub"></div>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose">✕</button>
@@ -621,7 +704,7 @@ main{max-width:1400px;margin:20px auto 60px;padding:0 24px}
 
 <script>
 let schools = {};
-const AREA_COLORS = ['#2f6fed','#8b4fe0','#c9761a','#0d9488','#c23670','#3f9d33','#b7900a'];
+const AREA_COLORS = ['#0d849c','#8b4fe0','#c07a14','#0b6b7e','#c23670','#3f9d33','#b08a4e'];
 const areaColorMap = {};
 function colorFor(areaKey){
   if(!areaColorMap[areaKey]) areaColorMap[areaKey] = AREA_COLORS[Object.keys(areaColorMap).length % AREA_COLORS.length];
@@ -630,7 +713,28 @@ function colorFor(areaKey){
 
 function fmtDate(iso){
   if(!iso) return '';
-  try{ return new Date(iso).toLocaleDateString('ar-SA',{year:'numeric',month:'short',day:'numeric'}); }catch(e){ return String(iso).slice(0,10); }
+  try{ return new Date(iso).toLocaleDateString('ar-SA-u-nu-latn',{year:'numeric',month:'long',day:'numeric'}); }catch(e){ return String(iso).slice(0,10); }
+}
+function fmtNum(n){
+  try{ return Number(n).toLocaleString('en-US'); }catch(e){ return String(n); }
+}
+function initials(name){
+  return (name||'').trim().slice(0,2);
+}
+
+// يحسب كل الإحصاءات اللازمة لعرض مدرسة واحدة: عدد أوامر العمل، عدد الصور،
+// تاريخ آخر إنجاز، ووجود ملاحظات من عدمه في أي قسم من أقسامها
+function schoolStats(school){
+  const orders = Object.entries(school.workOrders || {});
+  let photoCount = 0, hasFindings = false, lastDate = null;
+  orders.forEach(([wo, data])=>{
+    Object.values(data.photos_by_area || {}).forEach(list=>{ photoCount += list.length; });
+    Object.values(data.sections || {}).forEach(info=>{
+      if(info.finding_ar || info.findings) hasFindings = true;
+    });
+    if(data.completion_date && (!lastDate || data.completion_date > lastDate)) lastDate = data.completion_date;
+  });
+  return { woCount: orders.length, photoCount, hasFindings, lastDate };
 }
 
 Promise.all([
@@ -639,7 +743,6 @@ Promise.all([
 ]).then(([data, progress])=>{
   schools = data;
   buildFilters();
-  renderKpis();
   const last = progress && progress.length ? progress[progress.length-1] : null;
   document.getElementById('updatedNote').textContent = last ? ('آخر تحديث: ' + last.time) : '';
   render();
@@ -665,40 +768,19 @@ function buildFilters(){
   });
   areaSel.addEventListener('change', render);
   regionSel.addEventListener('change', render);
+  document.getElementById('flagFilter').addEventListener('change', render);
 }
 
-function renderKpis(){
-  let woCount=0, photoCount=0, areaSet=new Set();
-  Object.values(schools).forEach(s=>{
-    Object.values(s.workOrders||{}).forEach(wo=>{
-      woCount++;
-      Object.values(wo.photos_by_area||{}).forEach(list=>{ photoCount += list.length; });
-      Object.keys(wo.sections||{}).forEach(k=>areaSet.add(k));
-    });
-  });
-  const kpis = [
-    ['مدرسة', Object.keys(schools).length],
-    ['أمر شغل', woCount],
-    ['صورة', photoCount],
-    ['تصنيف ملاحظة', areaSet.size]
-  ];
-  document.getElementById('kpis').innerHTML = kpis.map(([lbl,val])=>
-    '<div class="kpi"><div class="val mono">' + val.toLocaleString('ar-EG') + '</div><div class="lbl">' + lbl + '</div></div>'
-  ).join('');
-}
-
-function render(){
-  const root = document.getElementById('listRoot');
-  const resultCount = document.getElementById('resultCount');
+function filteredEntries(){
   const q = document.getElementById('search').value.trim().toLowerCase();
   const areaFilter = document.getElementById('areaFilter').value;
   const regionFilter = document.getElementById('regionFilter').value;
-  root.innerHTML = '';
+  const flagFilter = document.getElementById('flagFilter').value;
 
-  const entries = Object.entries(schools).filter(([code, school])=>{
+  return Object.entries(schools).filter(([code, school])=>{
     if(regionFilter && school.site !== regionFilter) return false;
     if(q){
-      const hit = school.name.toLowerCase().includes(q)
+      const hit = (school.name||'').toLowerCase().includes(q)
         || String(code).toLowerCase().includes(q)
         || String(school.ministry_id||'').toLowerCase().includes(q)
         || String(school.site||'').toLowerCase().includes(q)
@@ -711,125 +793,172 @@ function render(){
       );
       if(!hasArea) return false;
     }
+    if(flagFilter){
+      const stats = schoolStats(school);
+      if(flagFilter === 'yes' && !stats.hasFindings) return false;
+      if(flagFilter === 'no' && stats.hasFindings) return false;
+    }
     return true;
   });
+}
 
-  resultCount.textContent = (q||areaFilter||regionFilter) ? (entries.length.toLocaleString('ar-EG') + ' نتيجة من ' + Object.keys(schools).length.toLocaleString('ar-EG')) : (Object.keys(schools).length.toLocaleString('ar-EG') + ' مدرسة');
+function renderKpis(entries){
+  let photoCount = 0, flaggedCount = 0, woCount = 0;
+  entries.forEach(([code, school])=>{
+    const stats = schoolStats(school);
+    photoCount += stats.photoCount;
+    woCount += stats.woCount;
+    if(stats.hasFindings) flaggedCount++;
+  });
+  const kpis = [
+    ['عدد المدارس', entries.length],
+    ['أوامر العمل', woCount],
+    ['عدد الصور', photoCount],
+    ['مدارس بها ملاحظات', flaggedCount]
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(([lbl,val])=>
+    '<div class="kpi"><div class="val mono">' + fmtNum(val) + '</div><div class="lbl">' + lbl + '</div></div>'
+  ).join('');
+}
+
+function render(){
+  const root = document.getElementById('listRoot');
+  const resultCount = document.getElementById('resultCount');
+  const entries = filteredEntries();
+  const totalSchools = Object.keys(schools).length;
+
+  resultCount.innerHTML = 'عدد النتائج: <span class="mono">' + fmtNum(entries.length) + '</span> من إجمالي <span class="mono">' + fmtNum(totalSchools) + '</span> مدرسة';
+  renderKpis(entries);
 
   if(entries.length === 0){
-    root.innerHTML = '<div class="no-results">لا توجد نتائج مطابقة لبحثك</div>';
+    root.innerHTML = '<div class="no-results">لا توجد مدارس مطابقة لمعايير البحث الحالية</div>';
     return;
   }
 
-  entries.forEach(([code, school])=>{
-    const card = document.createElement('div');
-    card.className = 'school-card';
+  root.innerHTML = entries.map(([code, school])=>{
+    const stats = schoolStats(school);
+    const locLine = [school.site, school.neighbourhood].filter(Boolean).join(' — ') || 'الموقع غير محدَّد';
+    const flagChip = stats.hasFindings
+      ? '<span class="stat-chip flag">⚠ بها ملاحظات</span>'
+      : '<span class="stat-chip ok">✓ لا توجد ملاحظات</span>';
+    return (
+      '<div class="school-card" data-code="' + code.replace(/"/g,'&quot;') + '">' +
+        '<div class="sc-top">' +
+          '<div class="school-icon">' + initials(school.name) + '</div>' +
+          '<div class="sc-text">' +
+            '<div class="school-name">' + (school.name || 'بلا اسم') + '</div>' +
+            '<div class="school-code">الرقم الوزاري: <span class="mono">' + (school.ministry_id || '—') + '</span></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="sc-loc">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>' +
+          locLine +
+        '</div>' +
+        '<div class="sc-stats">' +
+          '<span class="stat-chip">📄 <span class="mono">' + fmtNum(stats.woCount) + '</span> أمر عمل</span>' +
+          '<span class="stat-chip">📷 <span class="mono">' + fmtNum(stats.photoCount) + '</span> صورة</span>' +
+          flagChip +
+        '</div>' +
+        '<div class="sc-foot">' +
+          '<span>آخر إنجاز</span>' +
+          '<span class="sc-date mono">' + (stats.lastDate ? fmtDate(stats.lastDate) : '—') + '</span>' +
+        '</div>' +
+      '</div>'
+    );
+  }).join('');
 
-    let woCount = Object.keys(school.workOrders||{}).length;
-    let photoCount = 0;
-    Object.values(school.workOrders||{}).forEach(wo=>Object.values(wo.photos_by_area||{}).forEach(l=>photoCount+=l.length));
+  root.querySelectorAll('.school-card').forEach(card=>{
+    card.addEventListener('click', ()=> openModal(card.dataset.code));
+  });
+}
 
-    const head = document.createElement('div');
-    head.className = 'school-head';
-    head.innerHTML =
-      '<div class="school-head-left">' +
-        '<div class="school-name">' + school.name + '</div>' +
-        '<div class="school-code">الرقم الوزاري: <span class="mono">' + (school.ministry_id || '—') + '</span> · كود الموقع: <span class="mono">' + code + '</span></div>' +
-        '<div class="school-meta">' + [school.site, school.neighbourhood].filter(Boolean).join(' — ') + '</div>' +
-      '</div>' +
-      '<div class="school-head-right">' +
-        '<span class="pill">' + woCount + ' أمر شغل</span>' +
-        '<span class="pill">' + photoCount + ' صورة</span>' +
-        '<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
-      '</div>';
-    head.addEventListener('click', ()=> card.classList.toggle('open'));
+function openModal(code){
+  const school = schools[code];
+  if(!school) return;
+  document.getElementById('mName').textContent = school.name || 'بلا اسم';
+  document.getElementById('mSub').textContent =
+    [school.site, school.neighbourhood].filter(Boolean).join(' — ') +
+    (school.ministry_id ? ' · الرقم الوزاري ' + school.ministry_id : '') +
+    ' · رمز الموقع ' + code;
 
-    const body = document.createElement('div');
-    body.className = 'school-body';
-
-    Object.entries(school.workOrders||{}).forEach(([wo, data])=>{
-      const woBlock = document.createElement('div');
-      woBlock.className = 'wo-block';
-
-      const woTitle = document.createElement('div');
-      woTitle.className = 'wo-title';
-      woTitle.innerHTML = 'أمر شغل: <span class="mono">' + wo + '</span>' + (data.assignment_month ? ' — ' + data.assignment_month : '');
-      woBlock.appendChild(woTitle);
-
-      const woMeta = document.createElement('div');
-      woMeta.className = 'wo-meta';
+  const body = document.getElementById('mBody');
+  const orders = Object.entries(school.workOrders || {});
+  if(orders.length === 0){
+    body.innerHTML = '<div style="text-align:center;color:var(--muted);padding:30px 0">لا توجد بيانات تفصيلية لهذه المدرسة بعد</div>';
+  } else {
+    body.innerHTML = orders.map(([wo, data])=>{
       const metaParts = [];
       if (data.inspector_fullname) metaParts.push('المفتش: ' + data.inspector_fullname);
       if (data.completion_date) metaParts.push('تاريخ الإنجاز: ' + fmtDate(data.completion_date));
       if (data.overall_rating) metaParts.push('التقييم العام: ' + data.overall_rating);
-      woMeta.textContent = metaParts.join(' — ');
-      woBlock.appendChild(woMeta);
 
-      Object.entries(data.photos_by_area || {}).forEach(([area, photos])=>{
+      const areasHtml = Object.entries(data.photos_by_area || {}).map(([area, photos])=>{
         const info = (data.sections && data.sections[area]) || (data.findingsMap && data.findingsMap[area]) || {};
         const areaLabel = info.name_ar || info.name_en || info.en || area;
-        if(areaFilter && areaLabel !== areaFilter) return;
-
-        const areaBlock = document.createElement('div');
-        areaBlock.className = 'area-block';
         const color = colorFor(area);
-
-        const headRow = document.createElement('div');
-        headRow.className = 'area-head';
-        headRow.innerHTML =
-          '<span class="area-name">' + areaLabel + '</span>' +
-          '<span class="area-tag" style="color:' + color + '">' + photos.length + ' صورة</span>';
-        areaBlock.appendChild(headRow);
-
         const findingText = info.finding_ar || info.findings || info.finding;
-        if(findingText){
-          const finding = document.createElement('div');
-          finding.className = 'area-finding';
-          finding.textContent = '📝 ' + findingText;
-          areaBlock.appendChild(finding);
-        }
-        if(info.overall_remarks){
-          const remarks = document.createElement('div');
-          remarks.className = 'area-remarks';
-          remarks.textContent = info.overall_remarks;
-          areaBlock.appendChild(remarks);
-        }
+        return (
+          '<div class="area-block">' +
+            '<div class="area-head">' +
+              '<span class="area-name">' + areaLabel + '</span>' +
+              '<span class="area-tag" style="color:' + color + '">' + fmtNum(photos.length) + ' صورة</span>' +
+            '</div>' +
+            (findingText ? '<div class="area-finding">📝 ' + findingText + '</div>' : '') +
+            (info.overall_remarks ? '<div class="area-remarks">' + info.overall_remarks + '</div>' : '') +
+            '<div class="thumbs">' +
+              photos.map(p =>
+                '<div class="thumb" data-src="' + p.url + '" data-caption="' +
+                (areaLabel + (findingText ? ' — ' + findingText : '') + (p.captured_at ? ' — ' + fmtDate(p.captured_at) : '')).replace(/"/g,'&quot;') +
+                '"><img loading="lazy" src="' + p.url + '"></div>'
+              ).join('') +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
 
-        const thumbs = document.createElement('div');
-        thumbs.className = 'thumbs';
-        photos.forEach(p=>{
-          const t = document.createElement('div');
-          t.className = 'thumb';
-          const img = document.createElement('img');
-          img.loading = 'lazy';
-          img.src = p.url;
-          t.appendChild(img);
-          t.addEventListener('click', ()=>{
-            document.getElementById('lightboxImg').src = p.url;
-            document.getElementById('lightboxCaption').textContent = (areaLabel) + (findingText ? ' — ' + findingText : '') + (p.captured_at ? ' — ' + fmtDate(p.captured_at) : '');
-            document.getElementById('lightbox').classList.add('open');
-          });
-          thumbs.appendChild(t);
-        });
-        areaBlock.appendChild(thumbs);
-        woBlock.appendChild(areaBlock);
-      });
+      return (
+        '<div class="wo-block">' +
+          '<div class="wo-title">أمر العمل: <span class="mono">' + wo + '</span>' + (data.assignment_month ? ' — ' + data.assignment_month : '') + '</div>' +
+          '<div class="wo-meta">' + metaParts.join(' — ') + '</div>' +
+          areasHtml +
+        '</div>'
+      );
+    }).join('');
+  }
 
-      body.appendChild(woBlock);
+  document.getElementById('detailOverlay').classList.add('open');
+
+  body.querySelectorAll('.thumb').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.getElementById('lightboxImg').src = t.dataset.src;
+      document.getElementById('lightboxCaption').textContent = t.dataset.caption;
+      document.getElementById('lightbox').classList.add('open');
     });
-
-    card.appendChild(head);
-    card.appendChild(body);
-    root.appendChild(card);
   });
 }
 
-document.getElementById('search').addEventListener('input', render);
+document.getElementById('modalClose').addEventListener('click', ()=> document.getElementById('detailOverlay').classList.remove('open'));
+document.getElementById('detailOverlay').addEventListener('click', e=>{
+  if(e.target.id === 'detailOverlay') e.currentTarget.classList.remove('open');
+});
 document.getElementById('lightbox').addEventListener('click', e=>{
   if(e.target.id === 'lightbox' || e.target.id === 'lightboxClose') document.getElementById('lightbox').classList.remove('open');
 });
 document.addEventListener('keydown', e=>{
-  if(e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+  if(e.key !== 'Escape') return;
+  const lb = document.getElementById('lightbox');
+  const md = document.getElementById('detailOverlay');
+  if(lb.classList.contains('open')) lb.classList.remove('open');
+  else if(md.classList.contains('open')) md.classList.remove('open');
+});
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  document.getElementById('search').value = '';
+  document.getElementById('areaFilter').value = '';
+  document.getElementById('regionFilter').value = '';
+  document.getElementById('flagFilter').value = '';
+  render();
 });
 </script>
 </body>
