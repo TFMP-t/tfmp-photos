@@ -48,7 +48,8 @@ header{position:sticky;top:58px;z-index:30;background:rgba(238,243,247,.88);back
 .head-inner{max-width:1320px;margin:0 auto;padding:18px 24px 16px}
 
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;display:flex;align-items:center;gap:11px}
+.kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;display:flex;align-items:center;gap:11px;transition:box-shadow .2s var(--ease), transform .2s var(--ease)}
+.kpi:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
 .kpi::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--kpi-color,var(--teal))}
 .kpi-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--kpi-color-soft,var(--accent-soft));color:var(--kpi-color,var(--teal))}
 .kpi-text{min-width:0}
@@ -73,14 +74,19 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .result-count .mono{color:var(--fg);font-weight:700}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.school-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);transition:box-shadow .2s var(--ease), transform .2s var(--ease);cursor:pointer;overflow:hidden;position:relative;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
-.school-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--grad-nav)}
-.school-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.school-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);transition:box-shadow .2s var(--ease), transform .2s var(--ease), border-color .2s var(--ease);cursor:pointer;overflow:hidden;position:relative;padding:16px 18px;display:flex;flex-direction:column;gap:12px;animation:cardIn .28s var(--ease) both}
+.school-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--card-accent,var(--grad-nav))}
+.school-card.ok::before{background:linear-gradient(180deg,#04543f,#0d849c)}
+.school-card.warn::before{background:linear-gradient(180deg,#8a4a12,#7d1f2c)}
+.school-card.neutral::before{background:linear-gradient(180deg,#3a4f5c,#6d8794)}
+.school-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:rgba(13,132,156,.35)}
 
 .sc-top{display:flex;align-items:flex-start;gap:12px;margin-inline-start:4px}
 .school-icon{width:42px;height:42px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:19px;box-shadow:0 3px 10px rgba(13,132,156,.30)}
-.school-icon.ok{background:linear-gradient(135deg,#0d2f40,#0d849c)}
+.school-icon.ok{background:linear-gradient(135deg,#04543f,#0d849c)}
 .school-icon.warn{background:linear-gradient(135deg,#8a4a12,#7d1f2c);box-shadow:0 3px 10px rgba(125,31,44,.30)}
+.school-icon.neutral{background:linear-gradient(135deg,#3a4f5c,#6d8794);box-shadow:0 3px 10px rgba(58,79,92,.25)}
 .sc-text{min-width:0;flex:1}
 .school-name{font-weight:700;font-size:14.5px;letter-spacing:-.005em;line-height:1.35}
 .school-code{font-size:.72rem;color:var(--faint);margin-top:3px}
@@ -90,7 +96,7 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .sc-loc svg{width:13px;height:13px;color:var(--faint);flex-shrink:0}
 
 .sc-stats{display:flex;gap:8px;flex-wrap:wrap;margin-inline-start:4px}
-.stat-chip{display:flex;align-items:center;gap:5px;font-size:.71rem;font-weight:600;padding:4px 9px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line-soft);color:var(--muted)}
+.stat-chip{display:flex;align-items:center;gap:5px;font-size:.71rem;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--line-soft);color:var(--muted);transition:transform .15s var(--ease)}
 .stat-chip.flag{background:var(--bad-soft);color:var(--bad);border-color:rgba(125,31,44,.2)}
 .stat-chip.ok{background:var(--good-soft);color:var(--good);border-color:rgba(6,106,82,.2)}
 
@@ -101,6 +107,8 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 
 .overlay{position:fixed;inset:0;background:rgba(8,20,28,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:200;overflow-y:auto}
 .overlay.open{display:flex}
+.overlay.open .modal{animation:modalIn .22s var(--ease)}
+@keyframes modalIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal{background:var(--surface);border-radius:var(--radius-lg);max-width:680px;width:100%;box-shadow:0 20px 60px rgba(8,35,48,.3);overflow:hidden}
 .modal-head{background:var(--grad-nav);padding:20px 24px;position:relative}
 .modal-head h2{color:#fff;margin:0;font-size:17px;font-weight:800}
@@ -120,12 +128,15 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .area-finding{font-size:.79rem;color:var(--fg);margin-bottom:8px;background:var(--warn-soft);border:1px solid #f2dfae;padding:8px 11px;border-radius:8px;line-height:1.55}
 .area-remarks{font-size:.78rem;color:var(--muted);margin-bottom:9px;white-space:pre-line;line-height:1.6}
 .thumbs{display:flex;flex-wrap:wrap;gap:8px}
-.thumb{width:78px;height:78px;border-radius:10px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--surface-2);box-shadow:var(--shadow-sm);transition:transform .15s var(--ease)}
+.thumb{width:78px;height:78px;border-radius:10px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--surface-2);box-shadow:var(--shadow-sm);transition:transform .15s var(--ease), box-shadow .15s var(--ease)}
+.thumb:hover{box-shadow:var(--shadow-md)}
 .thumb:hover{transform:translateY(-2px)}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;z-index:300}
 .lightbox.open{display:flex}
+.lightbox.open img{animation:lbIn .18s var(--ease)}
+@keyframes lbIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 .lightbox img{max-width:92vw;max-height:78vh;border-radius:6px}
 .lightbox-caption{color:#f0efe8;text-align:center;max-width:640px;font-size:.9rem;line-height:1.5}
 .lightbox-close{position:absolute;top:18px;left:18px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:18px}
@@ -164,7 +175,7 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
       <div class="field"><select id="sortSelect">
         <option value="date_desc">الأحدث إنجازًا أولًا</option>
         <option value="date_asc">الأقدم إنجازًا أولًا</option>
-        <option value="findings_first">الأكثر ملاحظات أولًا</option>
+        <option value="needs_attention_first">الأكثر احتياجًا للمتابعة أولًا</option>
         <option value="photos_desc">الأكثر صورًا أولًا</option>
         <option value="name_asc">الاسم (أ – ي)</option>
       </select></div>
@@ -176,7 +187,7 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 
 <main>
   <div class="result-count" id="resultCount"></div>
-  <div class="grid" id="listRoot"></div>
+  <div class="grid" id="listRoot"><div class="no-results">جارٍ تحميل بيانات المدارس…</div></div>
 </main>
 
 <div class="overlay" id="detailOverlay">
@@ -213,25 +224,45 @@ function fmtNum(n){
   try{ return Number(n).toLocaleString('en-US'); }catch(e){ return String(n); }
 }
 
+// كلمات دالّة على تقييم سلبي أو إيجابي داخل نص التقييم العام (overall_rating)، لتصنيف
+// حالة المدرسة تصنيفًا حقيقيًا بدل الاعتماد على مجرد وجود نص ملاحظة (فكل فحص يتضمَّن
+// ملاحظات عادةً، فهذا وحده لا يميّز مدرسة عن أخرى)
+const NEGATIVE_RATING_WORDS = ['ضعيف', 'سيئ', 'سيء', 'غير مطابق', 'مرفوض', 'يحتاج تحسين', 'غير مقبول'];
+const POSITIVE_RATING_WORDS = ['ممتاز', 'جيد جدًا', 'جيد جدا', 'جيد', 'مطابق', 'مقبول'];
+
+function ratingTone(ratingText){
+  if(!ratingText) return 'neutral';
+  if(NEGATIVE_RATING_WORDS.some(w => ratingText.includes(w))) return 'bad';
+  if(POSITIVE_RATING_WORDS.some(w => ratingText.includes(w))) return 'good';
+  return 'neutral';
+}
+
 // يحسب كل الإحصاءات اللازمة لعرض مدرسة واحدة: عدد أوامر العمل، عدد الصور،
-// تاريخ آخر إنجاز، وجود ملاحظات من عدمه في أي قسم من أقسامها، وكل التقييمات العامة المسجَّلة لها
+// تاريخ آخر إنجاز، كل التقييمات العامة المسجَّلة لها، وأسوأ تصنيف من بينها
+// (يُستخدم في تحديد المدارس التي تحتاج متابعة فعليًا)
 function schoolStats(school){
   const orders = Object.entries(school.workOrders || {});
-  let photoCount = 0, hasFindings = false, lastDate = null;
+  let photoCount = 0, lastDate = null;
   const ratings = new Set();
+  let worstTone = null; // null = لا يوجد تقييم مسجَّل بعد
+  const toneRank = { bad: 2, neutral: 1, good: 0 };
   orders.forEach(([wo, data])=>{
     Object.values(data.photos_by_area || {}).forEach(list=>{ photoCount += list.length; });
-    Object.values(data.sections || {}).forEach(info=>{
-      if(info.finding_ar || info.findings) hasFindings = true;
-    });
     if(data.completion_date && (!lastDate || data.completion_date > lastDate)) lastDate = data.completion_date;
-    if(data.overall_rating) ratings.add(data.overall_rating);
+    if(data.overall_rating){
+      ratings.add(data.overall_rating);
+      const tone = ratingTone(data.overall_rating);
+      if(worstTone === null || toneRank[tone] > toneRank[worstTone]) worstTone = tone;
+    }
   });
-  return { woCount: orders.length, photoCount, hasFindings, lastDate, ratings };
+  return { woCount: orders.length, photoCount, lastDate, ratings, worstTone };
 }
 
 Promise.all([
-  fetch('schools-data.json').then(r=>r.json()),
+  fetch('schools-data.json').then(r=>{
+    if(!r.ok) throw new Error('تعذّر الوصول إلى ملف بيانات المدارس (HTTP ' + r.status + ')');
+    return r.json();
+  }),
   fetch('progress.json?t=' + Date.now()).then(r=>r.ok?r.json():[]).catch(()=>[])
 ]).then(([data, progress])=>{
   schools = data;
@@ -239,6 +270,13 @@ Promise.all([
   const last = progress && progress.length ? progress[progress.length-1] : null;
   document.getElementById('updatedNote').textContent = last ? ('آخر تحديث: ' + last.time) : '';
   render();
+}).catch(err=>{
+  console.error('فشل تحميل بيانات المدارس:', err);
+  document.getElementById('kpis').innerHTML = '';
+  document.getElementById('resultCount').textContent = '';
+  document.getElementById('listRoot').innerHTML =
+    '<div class="no-results">تعذّر تحميل بيانات المدارس. يُرجى تحديث الصفحة، فإذا استمرت المشكلة تحقَّق من وجود ملف schools-data.json داخل مجلد docs.<br><span class="mono" style="font-size:.7rem;color:var(--faint)">' +
+    String(err.message || err).replace(/</g,'&lt;') + '</span></div>';
 });
 
 function buildFilters(){
@@ -280,10 +318,11 @@ function filteredEntries(){
   });
 }
 
-// يرتب المدارس المعروضة حسب اختيار المستخدم من قائمة "ترتيب النتائج"،
-// بدلًا من فلاتر التصنيف والملاحظات التي كانت قليلة الفائدة عمليًا
+// يرتب المدارس المعروضة حسب اختيار المستخدم من قائمة "ترتيب النتائج"
 function sortEntries(entries){
   const mode = document.getElementById('sortSelect').value;
+  const toneRank = { bad: 2, neutral: 1, good: 0 };
+  const rankOf = tone => tone === null ? -1 : toneRank[tone];
   const withStats = entries.map(e => [e[0], e[1], schoolStats(e[1])]);
 
   withStats.sort((a, b) => {
@@ -292,8 +331,8 @@ function sortEntries(entries){
     switch(mode){
       case 'date_asc':
         return (statsA.lastDate || '').localeCompare(statsB.lastDate || '');
-      case 'findings_first':
-        return (statsB.hasFindings === statsA.hasFindings) ? 0 : (statsB.hasFindings ? 1 : -1);
+      case 'needs_attention_first':
+        return rankOf(statsB.worstTone) - rankOf(statsA.worstTone);
       case 'photos_desc':
         return statsB.photoCount - statsA.photoCount;
       case 'name_asc':
@@ -308,18 +347,18 @@ function sortEntries(entries){
 }
 
 function renderKpis(entries){
-  let photoCount = 0, flaggedCount = 0, woCount = 0;
+  let photoCount = 0, needsAttentionCount = 0, woCount = 0;
   entries.forEach(([code, school])=>{
     const stats = schoolStats(school);
     photoCount += stats.photoCount;
     woCount += stats.woCount;
-    if(stats.hasFindings) flaggedCount++;
+    if(stats.worstTone === 'bad') needsAttentionCount++;
   });
   const kpis = [
     ['🏫', 'عدد المدارس', entries.length, '#0d849c', '#e2f3f6'],
     ['📄', 'أوامر العمل', woCount, '#0d2f40', '#e5edf0'],
     ['📷', 'عدد الصور', photoCount, '#b08a4e', '#f8f1e6'],
-    ['⚠', 'مدارس بها ملاحظات', flaggedCount, '#7d1f2c', '#fdf0f2']
+    ['⚠', 'مدارس تحتاج متابعة', needsAttentionCount, '#7d1f2c', '#fdf0f2']
   ];
   document.getElementById('kpis').innerHTML = kpis.map(([icon,lbl,val,color,colorSoft])=>
     '<div class="kpi" style="--kpi-color:' + color + ';--kpi-color-soft:' + colorSoft + '">' +
@@ -347,15 +386,24 @@ function render(){
   root.innerHTML = entries.map(([code, school])=>{
     const stats = schoolStats(school);
     const locLine = [school.site, school.neighbourhood].filter(Boolean).join(' — ') || 'الموقع غير محدَّد';
-    const flagChip = stats.hasFindings
-      ? '<span class="stat-chip flag">⚠ بها ملاحظات</span>'
-      : '<span class="stat-chip ok">✓ لا توجد ملاحظات</span>';
-    // أيقونة الحالة: مؤشر بصري سريع يوضّح هل المدرسة تحتاج متابعة أم لا،
-    // بدلًا من عرض حرفين من اسم المدرسة (وهو مكرَّر مع الاسم المكتوب بجانبه أصلًا)
-    const statusIcon = stats.hasFindings ? '⚠' : '✓';
-    const statusClass = stats.hasFindings ? 'warn' : 'ok';
+
+    // شارة التقييم: تعرض آخر تقييم عام حقيقي مسجَّل للمدرسة (إن وُجد)، ملوَّنة
+    // حسب دلالته، بدل الاعتماد على مجرد وجود نص ملاحظة (فذلك متوقَّع في كل فحص)
+    const latestRating = [...stats.ratings].pop();
+    let ratingChip;
+    if(latestRating){
+      const cls = stats.worstTone === 'bad' ? 'flag' : (stats.worstTone === 'good' ? 'ok' : '');
+      ratingChip = '<span class="stat-chip ' + cls + '">🏷 التقييم: ' + latestRating + '</span>';
+    } else {
+      ratingChip = '<span class="stat-chip">🏷 لم يُسجَّل تقييم بعد</span>';
+    }
+
+    // أيقونة الحالة: مؤشر بصري سريع مبني على أسوأ تقييم عام حقيقي للمدرسة،
+    // بدلًا من عرض حرفين من اسم المدرسة (مكرَّر مع الاسم المكتوب بجانبه أصلًا)
+    const statusIcon = stats.worstTone === 'bad' ? '⚠' : (stats.worstTone === 'good' ? '✓' : '🏫');
+    const statusClass = stats.worstTone === 'bad' ? 'warn' : (stats.worstTone === 'good' ? 'ok' : 'neutral');
     return (
-      '<div class="school-card" data-code="' + code.replace(/"/g,'&quot;') + '">' +
+      '<div class="school-card ' + statusClass + '" data-code="' + code.replace(/"/g,'&quot;') + '">' +
         '<div class="sc-top">' +
           '<div class="school-icon ' + statusClass + '">' + statusIcon + '</div>' +
           '<div class="sc-text">' +
@@ -370,7 +418,7 @@ function render(){
         '<div class="sc-stats">' +
           '<span class="stat-chip">📄 <span class="mono">' + fmtNum(stats.woCount) + '</span> أمر عمل</span>' +
           '<span class="stat-chip">📷 <span class="mono">' + fmtNum(stats.photoCount) + '</span> صورة</span>' +
-          flagChip +
+          ratingChip +
         '</div>' +
         '<div class="sc-foot">' +
           '<span class="sc-date mono">' + (stats.lastDate ? fmtDate(stats.lastDate) : '—') + '</span>' +
