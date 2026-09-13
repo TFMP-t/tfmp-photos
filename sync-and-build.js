@@ -562,6 +562,13 @@ header{position:sticky;top:58px;z-index:30;background:rgba(238,243,247,.88);back
 .kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;display:flex;align-items:center;gap:11px;transition:box-shadow .2s var(--ease), transform .2s var(--ease)}
 .kpi:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
 .kpi::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--kpi-color,var(--teal))}
+.kpi-critical{background:linear-gradient(135deg,#7d1f2c,#a8342f 60%,#c0501f);border-color:transparent;animation:kpiCardPulse 2.4s ease-in-out infinite}
+.kpi-critical::before{background:rgba(255,255,255,.55)}
+.kpi-critical .kpi-icon{background:rgba(255,255,255,.18);color:#fff;animation:kpiPulse 1.8s ease-in-out infinite}
+.kpi-critical .val{color:#fff}
+.kpi-critical .lbl{color:rgba(255,255,255,.85)}
+@keyframes kpiPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.35)}50%{box-shadow:0 0 0 6px rgba(255,255,255,0)}}
+@keyframes kpiCardPulse{0%,100%{box-shadow:0 4px 14px rgba(125,31,44,.35)}50%{box-shadow:0 4px 22px rgba(125,31,44,.6)}}
 .kpi-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--kpi-color-soft,var(--accent-soft));color:var(--kpi-color,var(--teal))}
 .kpi-text{min-width:0}
 .kpi .val{font-size:19px;font-weight:800;line-height:1.15;letter-spacing:-.01em;color:var(--navy)}
@@ -586,6 +593,16 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 @keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.school-card:nth-child(1){animation-delay:.02s}
+.school-card:nth-child(2){animation-delay:.05s}
+.school-card:nth-child(3){animation-delay:.08s}
+.school-card:nth-child(4){animation-delay:.11s}
+.school-card:nth-child(5){animation-delay:.14s}
+.school-card:nth-child(6){animation-delay:.17s}
+.school-card:nth-child(7){animation-delay:.2s}
+.school-card:nth-child(8){animation-delay:.23s}
+.school-card:nth-child(9){animation-delay:.26s}
+.school-card:nth-child(n+10){animation-delay:.28s}
 .school-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);transition:box-shadow .2s var(--ease), transform .2s var(--ease), border-color .2s var(--ease);cursor:pointer;overflow:hidden;position:relative;padding:16px 18px;display:flex;flex-direction:column;gap:12px;animation:cardIn .28s var(--ease) both}
 .school-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:var(--card-accent,var(--grad-nav))}
 .school-card.ok::before{background:linear-gradient(180deg,#04543f,#0d849c)}
@@ -617,7 +634,8 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .no-results{text-align:center;color:var(--muted);padding:60px 0;font-size:14px;grid-column:1/-1}
 
 .overlay{position:fixed;inset:0;background:rgba(8,20,28,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:200;overflow-y:auto}
-.overlay.open{display:flex}
+.overlay.open{display:flex;animation:overlayIn .18s var(--ease)}
+@keyframes overlayIn{from{opacity:0}to{opacity:1}}
 .overlay.open .modal{animation:modalIn .22s var(--ease)}
 @keyframes modalIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal{background:var(--surface);border-radius:var(--radius-lg);max-width:680px;width:100%;box-shadow:0 20px 60px rgba(8,35,48,.3);overflow:hidden}
@@ -639,10 +657,10 @@ main{max-width:1320px;margin:22px auto 60px;padding:0 24px}
 .area-finding{font-size:.79rem;color:var(--fg);margin-bottom:8px;background:var(--warn-soft);border:1px solid #f2dfae;padding:8px 11px;border-radius:8px;line-height:1.55}
 .area-remarks{font-size:.78rem;color:var(--muted);margin-bottom:9px;white-space:pre-line;line-height:1.6}
 .thumbs{display:flex;flex-wrap:wrap;gap:8px}
-.thumb{width:78px;height:78px;border-radius:10px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--surface-2);box-shadow:var(--shadow-sm);transition:transform .15s var(--ease), box-shadow .15s var(--ease)}
-.thumb:hover{box-shadow:var(--shadow-md)}
-.thumb:hover{transform:translateY(-2px)}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb{width:78px;height:78px;border-radius:10px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--surface-2);box-shadow:var(--shadow-sm);transition:transform .18s var(--ease), box-shadow .18s var(--ease), border-color .18s var(--ease)}
+.thumb:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:var(--teal)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s var(--ease)}
+.thumb:hover img{transform:scale(1.12)}
 
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;z-index:300}
 .lightbox.open{display:flex}
@@ -737,15 +755,41 @@ function fmtNum(n){
 
 // كلمات دالّة على تقييم سلبي أو إيجابي داخل نص التقييم العام (overall_rating)، لتصنيف
 // حالة المدرسة تصنيفًا حقيقيًا بدل الاعتماد على مجرد وجود نص ملاحظة (فكل فحص يتضمَّن
-// ملاحظات عادةً، فهذا وحده لا يميّز مدرسة عن أخرى)
-const NEGATIVE_RATING_WORDS = ['ضعيف', 'سيئ', 'سيء', 'غير مطابق', 'مرفوض', 'يحتاج تحسين', 'غير مقبول'];
-const POSITIVE_RATING_WORDS = ['ممتاز', 'جيد جدًا', 'جيد جدا', 'جيد', 'مطابق', 'مقبول'];
+// ملاحظات عادةً، فهذا وحده لا يميّز مدرسة عن أخرى). تشمل القائمة الكلمات العربية
+// والإنجليزية معًا، لأن نظام TFMP قد يسجّل التقييم بأي من اللغتين (مثل "Poor")
+const NEGATIVE_RATING_WORDS = [
+  'ضعيف', 'سيئ', 'سيء', 'غير مطابق', 'مرفوض', 'يحتاج تحسين', 'غير مقبول',
+  'poor', 'bad', 'unsatisfactory', 'fail', 'critical'
+];
+const POSITIVE_RATING_WORDS = [
+  'ممتاز', 'جيد جدًا', 'جيد جدا', 'جيد', 'مطابق', 'مقبول',
+  'excellent', 'very good', 'good', 'satisfactory', 'pass'
+];
 
 function ratingTone(ratingText){
   if(!ratingText) return 'neutral';
-  if(NEGATIVE_RATING_WORDS.some(w => ratingText.includes(w))) return 'bad';
-  if(POSITIVE_RATING_WORDS.some(w => ratingText.includes(w))) return 'good';
+  const t = String(ratingText).toLowerCase();
+  if(NEGATIVE_RATING_WORDS.some(w => t.includes(w.toLowerCase()))) return 'bad';
+  if(POSITIVE_RATING_WORDS.some(w => t.includes(w.toLowerCase()))) return 'good';
   return 'neutral';
+}
+
+// أسماء المناطق والتقييمات تصل من نظام TFMP بالإنجليزية؛ هذان القاموسان للعرض
+// فقط، أما الفلترة والمقارنة الداخلية فتظل تعتمد على القيمة الأصلية كما وصلت من
+// النظام (site / overall_rating) حتى تبقى مطابقة تمامًا لبيانات TFMP الحقيقية
+const SITE_AR = {
+  ALTAIF: 'الطائف', ALULA: 'العلا', JEDDAH: 'جدة', MADINAH: 'المدينة المنورة',
+  MAHD: 'المهد', MAKKAH: 'مكة المكرمة', QNFUDAH: 'القنفذة', YANBU: 'ينبع'
+};
+const RATING_AR = { Excellent: 'ممتاز', Good: 'جيد', Fair: 'متوسط', Poor: 'حرج' };
+
+function siteLabel(site){
+  if(!site) return site;
+  return SITE_AR[String(site).toUpperCase()] || site;
+}
+function ratingLabel(rating){
+  if(!rating) return rating;
+  return RATING_AR[rating] || rating;
 }
 
 // يحسب كل الإحصاءات اللازمة لعرض مدرسة واحدة: عدد أوامر العمل، عدد الصور،
@@ -797,12 +841,12 @@ function buildFilters(){
     schoolStats(s).ratings.forEach(r => ratings.add(r));
   });
   const regionSel = document.getElementById('regionFilter');
-  [...regions].sort().forEach(r=>{
-    const o = document.createElement('option'); o.value = r; o.textContent = r; regionSel.appendChild(o);
+  [...regions].sort((a,b)=> siteLabel(a).localeCompare(siteLabel(b),'ar')).forEach(r=>{
+    const o = document.createElement('option'); o.value = r; o.textContent = siteLabel(r); regionSel.appendChild(o);
   });
   const ratingSel = document.getElementById('ratingFilter');
-  [...ratings].sort().forEach(r=>{
-    const o = document.createElement('option'); o.value = r; o.textContent = r; ratingSel.appendChild(o);
+  [...ratings].sort((a,b)=> ratingLabel(a).localeCompare(ratingLabel(b),'ar')).forEach(r=>{
+    const o = document.createElement('option'); o.value = r; o.textContent = ratingLabel(r); ratingSel.appendChild(o);
   });
   regionSel.addEventListener('change', render);
   ratingSel.addEventListener('change', render);
@@ -822,6 +866,7 @@ function filteredEntries(){
         || String(code).toLowerCase().includes(q)
         || String(school.ministry_id||'').toLowerCase().includes(q)
         || String(school.site||'').toLowerCase().includes(q)
+        || siteLabel(school.site).toLowerCase().includes(q)
         || String(school.neighbourhood||'').toLowerCase().includes(q);
       if(!hit) return false;
     }
@@ -858,21 +903,21 @@ function sortEntries(entries){
 }
 
 function renderKpis(entries){
-  let photoCount = 0, needsAttentionCount = 0, woCount = 0;
+  let photoCount = 0, criticalCount = 0, woCount = 0;
   entries.forEach(([code, school])=>{
     const stats = schoolStats(school);
     photoCount += stats.photoCount;
     woCount += stats.woCount;
-    if(stats.worstTone === 'bad') needsAttentionCount++;
+    if(stats.worstTone === 'bad') criticalCount++;
   });
   const kpis = [
-    ['🏫', 'عدد المدارس', entries.length, '#0d849c', '#e2f3f6'],
-    ['📄', 'أوامر العمل', woCount, '#0d2f40', '#e5edf0'],
-    ['📷', 'عدد الصور', photoCount, '#b08a4e', '#f8f1e6'],
-    ['⚠', 'مدارس تحتاج متابعة', needsAttentionCount, '#7d1f2c', '#fdf0f2']
+    ['🏫', 'عدد المدارس', entries.length, '#0d849c', '#e2f3f6', false],
+    ['📄', 'أوامر العمل', woCount, '#0d2f40', '#e5edf0', false],
+    ['📷', 'عدد الصور', photoCount, '#b08a4e', '#f8f1e6', false],
+    ['⚠', 'المدارس الحرجة', criticalCount, '#7d1f2c', '#fdf0f2', true]
   ];
-  document.getElementById('kpis').innerHTML = kpis.map(([icon,lbl,val,color,colorSoft])=>
-    '<div class="kpi" style="--kpi-color:' + color + ';--kpi-color-soft:' + colorSoft + '">' +
+  document.getElementById('kpis').innerHTML = kpis.map(([icon,lbl,val,color,colorSoft,critical])=>
+    '<div class="kpi' + (critical && val > 0 ? ' kpi-critical' : '') + '" style="--kpi-color:' + color + ';--kpi-color-soft:' + colorSoft + '">' +
       '<div class="kpi-icon">' + icon + '</div>' +
       '<div class="kpi-text"><div class="val mono">' + fmtNum(val) + '</div><div class="lbl">' + lbl + '</div></div>' +
     '</div>'
@@ -896,7 +941,7 @@ function render(){
 
   root.innerHTML = entries.map(([code, school])=>{
     const stats = schoolStats(school);
-    const locLine = [school.site, school.neighbourhood].filter(Boolean).join(' — ') || 'الموقع غير محدَّد';
+    const locLine = [siteLabel(school.site), school.neighbourhood].filter(Boolean).join(' — ') || 'الموقع غير محدَّد';
 
     // شارة التقييم: تعرض آخر تقييم عام حقيقي مسجَّل للمدرسة (إن وُجد)، ملوَّنة
     // حسب دلالته، بدل الاعتماد على مجرد وجود نص ملاحظة (فذلك متوقَّع في كل فحص)
@@ -904,7 +949,7 @@ function render(){
     let ratingChip;
     if(latestRating){
       const cls = stats.worstTone === 'bad' ? 'flag' : (stats.worstTone === 'good' ? 'ok' : '');
-      ratingChip = '<span class="stat-chip ' + cls + '">🏷 التقييم: ' + latestRating + '</span>';
+      ratingChip = '<span class="stat-chip ' + cls + '">🏷 التقييم: ' + ratingLabel(latestRating) + '</span>';
     } else {
       ratingChip = '<span class="stat-chip">🏷 لم يُسجَّل تقييم بعد</span>';
     }
@@ -948,7 +993,7 @@ function openModal(code){
   if(!school) return;
   document.getElementById('mName').textContent = school.name || 'بلا اسم';
   document.getElementById('mSub').textContent =
-    [school.site, school.neighbourhood].filter(Boolean).join(' — ') +
+    [siteLabel(school.site), school.neighbourhood].filter(Boolean).join(' — ') +
     (school.ministry_id ? ' · الرقم الوزاري ' + school.ministry_id : '') +
     ' · رمز الموقع ' + code;
 
@@ -961,7 +1006,7 @@ function openModal(code){
       const metaParts = [];
       if (data.inspector_fullname) metaParts.push('المفتش: ' + data.inspector_fullname);
       if (data.completion_date) metaParts.push('تاريخ الإنجاز: ' + fmtDate(data.completion_date));
-      if (data.overall_rating) metaParts.push('التقييم العام: ' + data.overall_rating);
+      if (data.overall_rating) metaParts.push('التقييم العام: ' + ratingLabel(data.overall_rating));
 
       const areasHtml = Object.entries(data.photos_by_area || {}).map(([area, photos])=>{
         const info = (data.sections && data.sections[area]) || (data.findingsMap && data.findingsMap[area]) || {};
