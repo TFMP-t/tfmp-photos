@@ -85644,6 +85644,460 @@
             "finding": "مستوفٍ للمعايير"
           }
         }
+      },
+      "WO-202610-01961": {
+        "status": "COMPLETED",
+        "assignment_month": "2026-10",
+        "inspection_cycle": 1,
+        "start_date": "2026-10-18T15:07:55.628Z",
+        "completion_date": "2026-10-18T16:33:14.346Z",
+        "total_work_time_min": 85,
+        "inspector_username": "aa.almutairi",
+        "inspector_fullname": "Ahmed Almutairi",
+        "risk_score": "0.001",
+        "overall_rating": "Excellent",
+        "overall_rating_remarks": null,
+        "performance_ratings": {
+          "client_value": "Excellent",
+          "hse_compliance": "Excellent",
+          "responsiveness": "Good",
+          "workforce_prof": "Excellent",
+          "service_quality": "Excellent",
+          "supervision_comm": "Excellent"
+        },
+        "photos_by_area": {
+          "FLS": [
+            {
+              "filename": "WO-202610-01961_FLS_1.jpg",
+              "url": "photos/SB901028/WO-202610-01961_WO-202610-01961_FLS_1.jpg",
+              "captured_at": "2026-10-18 19:33:14.064088+03"
+            }
+          ],
+          "CIVIL": [
+            {
+              "filename": "WO-202610-01961_CIVIL_1.jpg",
+              "url": "photos/SB901028/WO-202610-01961_WO-202610-01961_CIVIL_1.jpg",
+              "captured_at": "2026-10-18 19:33:14.064088+03"
+            },
+            {
+              "filename": "WO-202610-01961_CIVIL_2.jpg",
+              "url": "photos/SB901028/WO-202610-01961_WO-202610-01961_CIVIL_2.jpg",
+              "captured_at": "2026-10-18 19:33:14.064088+03"
+            },
+            {
+              "filename": "WO-202610-01961_CIVIL_3.jpg",
+              "url": "photos/SB901028/WO-202610-01961_WO-202610-01961_CIVIL_3.jpg",
+              "captured_at": "2026-10-18 19:33:14.064088+03"
+            },
+            {
+              "filename": "WO-202610-01961_CIVIL_4.jpg",
+              "url": "photos/SB901028/WO-202610-01961_WO-202610-01961_CIVIL_4.jpg",
+              "captured_at": "2026-10-18 19:33:14.064088+03"
+            }
+          ]
+        },
+        "sections": {
+          "BACKUP": {
+            "section": "A",
+            "name_en": "Backup Power Systems",
+            "name_ar": "أنظمة الطاقة الاحتياطية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "CIVIL": {
+            "section": "A",
+            "name_en": "Civil & Structural Works",
+            "name_ar": "الأعمال المدنية والإنشائية",
+            "inspection_focus": [
+              "Walls",
+              "Floors"
+            ],
+            "findings": "Major Non-Conformance",
+            "finding_ar": "عدم مطابقة جسيمة",
+            "root_cause": "Supervision / QC Gap",
+            "root_cause_ar": "فجوة في الإشراف / ضبط الجودة",
+            "overall_remarks": "ميل في السور وتكسر في الميدا  - هبوط في التربه تقشر دهانات",
+            "availability": "AVAILABLE"
+          },
+          "ELEC": {
+            "section": "A",
+            "name_en": "Electrical Systems",
+            "name_ar": "الأنظمة الكهربائية",
+            "inspection_focus": [
+              "Distribution Panels",
+              "Lighting"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "FLS": {
+            "section": "A",
+            "name_en": "Fire & Life Safety Systems",
+            "name_ar": "أنظمة الحريق والسلامة",
+            "inspection_focus": [
+              "Fire Pump",
+              "Extinguishers",
+              "Fire Alarm"
+            ],
+            "findings": "Major Non-Conformance",
+            "finding_ar": "عدم مطابقة جسيمة",
+            "root_cause": "Supervision / QC Gap",
+            "root_cause_ar": "فجوة في الإشراف / ضبط الجودة",
+            "overall_remarks": "المضخة لاتعمل",
+            "availability": "AVAILABLE"
+          },
+          "HVAC": {
+            "section": "A",
+            "name_en": "HVAC System",
+            "name_ar": "نظام التكييف والتهوية",
+            "inspection_focus": [
+              "Split Unit",
+              "Window AC"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "LIFT": {
+            "section": "A",
+            "name_en": "Lifts & Escalators",
+            "name_ar": "المصاعد والسلالم المتحركة",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PLUMB": {
+            "section": "A",
+            "name_en": "Plumbing Systems",
+            "name_ar": "أنظمة السباكة",
+            "inspection_focus": [
+              "Valves",
+              "Pumps",
+              "Water Tanks"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SOUND": {
+            "section": "A",
+            "name_en": "Sound & PA System",
+            "name_ar": "نظام الصوت والنداء العام",
+            "inspection_focus": [
+              "Amplifiers & Controllers",
+              "Speakers",
+              "Microphones"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SPORTS": {
+            "section": "A",
+            "name_en": "Playground Equipment & Sports Facilities",
+            "name_ar": "معدات الملاعب والمنشآت الرياضية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "CLEAN": {
+            "section": "B",
+            "name_en": "Cleaning Services",
+            "name_ar": "خدمات النظافة",
+            "inspection_focus": [
+              "Washrooms",
+              "Classrooms",
+              "Offices",
+              "Common Areas"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "LANDSCAPE": {
+            "section": "B",
+            "name_en": "Landscaping Services",
+            "name_ar": "خدمات تنسيق المواقع",
+            "inspection_focus": [
+              "Lawn"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "PEST": {
+            "section": "B",
+            "name_en": "Pest Control",
+            "name_ar": "مكافحة الآفات",
+            "inspection_focus": [
+              "Internal Areas",
+              "External Areas",
+              "Food Preparation Areas"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "WASTE": {
+            "section": "B",
+            "name_en": "Waste Management",
+            "name_ar": "إدارة النفايات",
+            "inspection_focus": [
+              "Waste Bins"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "CHILD": {
+            "section": "C",
+            "name_en": "Child Safety & Access Control",
+            "name_ar": "سلامة الأطفال والتحكم في الدخول",
+            "inspection_focus": [
+              "Entry Gates",
+              "Classrooms"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "EMERG": {
+            "section": "C",
+            "name_en": "Emergency Preparedness",
+            "name_ar": "الاستعداد للطوارئ",
+            "inspection_focus": [
+              "Fire Exits",
+              "First Aid",
+              "Assembly Points"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "HYGIENE": {
+            "section": "C",
+            "name_en": "Environmental Hygiene & Health",
+            "name_ar": "النظافة البيئية والصحة",
+            "inspection_focus": [
+              "Washrooms",
+              "Cafeteria",
+              "Drinking Water Points"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SAFETY": {
+            "section": "C",
+            "name_en": "Safety Compliance",
+            "name_ar": "الالتزام بالسلامة",
+            "inspection_focus": [
+              "PPE",
+              "Signage",
+              "Barricading"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "BEHAV": {
+            "section": "D",
+            "name_en": "Behaviour & Safeguarding Awareness",
+            "name_ar": "الوعي بالسلوك ومتطلبات الحماية",
+            "inspection_focus": [
+              "Student Interaction",
+              "Classroom & Corridor Presence",
+              "Playground Areas"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "COMPETENCY": {
+            "section": "D",
+            "name_en": "Workforce Performance",
+            "name_ar": "أداء القوى العاملة",
+            "inspection_focus": [
+              "Technicians",
+              "Cleaners"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "ETHICS": {
+            "section": "D",
+            "name_en": "Ethics & Professional Conduct",
+            "name_ar": "الأخلاقيات والسلوك المهني",
+            "inspection_focus": [
+              "Respectful Behaviour",
+              "Cultural Sensitivity"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SUPER": {
+            "section": "D",
+            "name_en": "Supervision Effectiveness",
+            "name_ar": "فعالية الإشراف",
+            "inspection_focus": [
+              "Site Lead",
+              "Supervisor"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          }
+        },
+        "findingsMap": {
+          "BACKUP": {
+            "en": "Backup Power Systems",
+            "finding": ""
+          },
+          "CIVIL": {
+            "en": "Civil & Structural Works",
+            "finding": "عدم مطابقة جسيمة"
+          },
+          "ELEC": {
+            "en": "Electrical Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "FLS": {
+            "en": "Fire & Life Safety Systems",
+            "finding": "عدم مطابقة جسيمة"
+          },
+          "HVAC": {
+            "en": "HVAC System",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LIFT": {
+            "en": "Lifts & Escalators",
+            "finding": ""
+          },
+          "PLUMB": {
+            "en": "Plumbing Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SOUND": {
+            "en": "Sound & PA System",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SPORTS": {
+            "en": "Playground Equipment & Sports Facilities",
+            "finding": ""
+          },
+          "CLEAN": {
+            "en": "Cleaning Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LANDSCAPE": {
+            "en": "Landscaping Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "PEST": {
+            "en": "Pest Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "WASTE": {
+            "en": "Waste Management",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "CHILD": {
+            "en": "Child Safety & Access Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "EMERG": {
+            "en": "Emergency Preparedness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "HYGIENE": {
+            "en": "Environmental Hygiene & Health",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SAFETY": {
+            "en": "Safety Compliance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "BEHAV": {
+            "en": "Behaviour & Safeguarding Awareness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "COMPETENCY": {
+            "en": "Workforce Performance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "ETHICS": {
+            "en": "Ethics & Professional Conduct",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SUPER": {
+            "en": "Supervision Effectiveness",
+            "finding": "مستوفٍ للمعايير"
+          }
+        }
       }
     }
   },
@@ -425353,6 +425807,762 @@
           "SAFETY": {
             "en": "Safety Compliance",
             "finding": "مستوفٍ للمعايير"
+          },
+          "BEHAV": {
+            "en": "Behaviour & Safeguarding Awareness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "COMPETENCY": {
+            "en": "Workforce Performance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "ETHICS": {
+            "en": "Ethics & Professional Conduct",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SUPER": {
+            "en": "Supervision Effectiveness",
+            "finding": "مستوفٍ للمعايير"
+          }
+        }
+      },
+      "WO-202610-03441": {
+        "status": "COMPLETED",
+        "assignment_month": "2026-10",
+        "inspection_cycle": 1,
+        "start_date": "2026-10-17T12:18:59.946Z",
+        "completion_date": "2026-10-17T12:46:54.958Z",
+        "total_work_time_min": 27,
+        "inspector_username": "o.aldeer",
+        "inspector_fullname": "Omar Eldeer",
+        "risk_score": "0.004",
+        "overall_rating": "Good",
+        "overall_rating_remarks": null,
+        "performance_ratings": {
+          "client_value": "Fair",
+          "hse_compliance": "Good",
+          "responsiveness": "Good",
+          "workforce_prof": "Good",
+          "service_quality": "Fair",
+          "supervision_comm": "Excellent"
+        },
+        "photos_by_area": {
+          "HVAC": [
+            {
+              "filename": "WO-202610-03441_HVAC_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HVAC_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_HVAC_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HVAC_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_HVAC_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HVAC_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_HVAC_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HVAC_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "ELEC": [
+            {
+              "filename": "WO-202610-03441_ELEC_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_ELEC_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_ELEC_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_ELEC_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_ELEC_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_ELEC_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_ELEC_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_ELEC_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "PLUMB": [
+            {
+              "filename": "WO-202610-03441_PLUMB_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PLUMB_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_PLUMB_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PLUMB_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_PLUMB_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PLUMB_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_PLUMB_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PLUMB_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "FLS": [
+            {
+              "filename": "WO-202610-03441_FLS_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_FLS_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_FLS_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_FLS_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_FLS_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_FLS_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_FLS_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_FLS_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "CIVIL": [
+            {
+              "filename": "WO-202610-03441_CIVIL_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CIVIL_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CIVIL_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CIVIL_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CIVIL_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CIVIL_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CIVIL_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CIVIL_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "SPORTS": [
+            {
+              "filename": "WO-202610-03441_SPORTS_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SPORTS_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SPORTS_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SPORTS_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SPORTS_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SPORTS_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SPORTS_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SPORTS_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "SOUND": [
+            {
+              "filename": "WO-202610-03441_SOUND_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SOUND_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SOUND_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SOUND_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SOUND_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SOUND_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SOUND_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SOUND_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "CLEAN": [
+            {
+              "filename": "WO-202610-03441_CLEAN_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CLEAN_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CLEAN_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CLEAN_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CLEAN_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CLEAN_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CLEAN_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CLEAN_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "WASTE": [
+            {
+              "filename": "WO-202610-03441_WASTE_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_WASTE_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_WASTE_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_WASTE_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_WASTE_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_WASTE_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_WASTE_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_WASTE_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "LANDSCAPE": [
+            {
+              "filename": "WO-202610-03441_LANDSCAPE_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_LANDSCAPE_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_LANDSCAPE_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_LANDSCAPE_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_LANDSCAPE_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_LANDSCAPE_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_LANDSCAPE_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_LANDSCAPE_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "PEST": [
+            {
+              "filename": "WO-202610-03441_PEST_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PEST_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_PEST_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PEST_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_PEST_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PEST_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_PEST_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_PEST_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "SAFETY": [
+            {
+              "filename": "WO-202610-03441_SAFETY_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SAFETY_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SAFETY_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SAFETY_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SAFETY_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SAFETY_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_SAFETY_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_SAFETY_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "EMERG": [
+            {
+              "filename": "WO-202610-03441_EMERG_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_EMERG_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_EMERG_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_EMERG_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_EMERG_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_EMERG_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_EMERG_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_EMERG_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "CHILD": [
+            {
+              "filename": "WO-202610-03441_CHILD_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CHILD_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CHILD_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CHILD_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CHILD_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CHILD_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_CHILD_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_CHILD_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ],
+          "HYGIENE": [
+            {
+              "filename": "WO-202610-03441_HYGIENE_1.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HYGIENE_1.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_HYGIENE_2.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HYGIENE_2.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_HYGIENE_3.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HYGIENE_3.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            },
+            {
+              "filename": "WO-202610-03441_HYGIENE_4.jpg",
+              "url": "photos/SB902585/WO-202610-03441_WO-202610-03441_HYGIENE_4.jpg",
+              "captured_at": "2026-10-17 15:46:55.277574+03"
+            }
+          ]
+        },
+        "sections": {
+          "BACKUP": {
+            "section": "A",
+            "name_en": "Backup Power Systems",
+            "name_ar": "أنظمة الطاقة الاحتياطية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "CIVIL": {
+            "section": "A",
+            "name_en": "Civil & Structural Works",
+            "name_ar": "الأعمال المدنية والإنشائية",
+            "inspection_focus": [
+              "Walls",
+              "Floors",
+              "Ceilings"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "وجود تشققات خارجية للجدران وانتفاخات وتكسير بالبلاط ",
+            "availability": "AVAILABLE"
+          },
+          "ELEC": {
+            "section": "A",
+            "name_en": "Electrical Systems",
+            "name_ar": "الأنظمة الكهربائية",
+            "inspection_focus": [
+              "Distribution Panels",
+              "Lighting"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "وجود بعض التمديدات العشوائية ",
+            "availability": "AVAILABLE"
+          },
+          "FLS": {
+            "section": "A",
+            "name_en": "Fire & Life Safety Systems",
+            "name_ar": "أنظمة الحريق والسلامة",
+            "inspection_focus": [
+              "Fire Alarm",
+              "Fire Pump",
+              "Extinguishers"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "جميع أنظمة الامن والسلامة تعمل بشكل طبيعي ",
+            "availability": "AVAILABLE"
+          },
+          "HVAC": {
+            "section": "A",
+            "name_en": "HVAC System",
+            "name_ar": "نظام التكييف والتهوية",
+            "inspection_focus": [
+              "Split Unit"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "- وحدات الاسبليت قديمه ذات تبريد ضعيف \n- يوجد عدد ٢ فصول مركب بها شفاط بجانب وحدات التكييف مما تضعف البروده ",
+            "availability": "AVAILABLE"
+          },
+          "LIFT": {
+            "section": "A",
+            "name_en": "Lifts & Escalators",
+            "name_ar": "المصاعد والسلالم المتحركة",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PLUMB": {
+            "section": "A",
+            "name_en": "Plumbing Systems",
+            "name_ar": "أنظمة السباكة",
+            "inspection_focus": [
+              "Pumps",
+              "Valves",
+              "Water Tanks"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "ساعة مضخة المياه خربانه ولكن المضخة سليمه وتعمل ",
+            "availability": "AVAILABLE"
+          },
+          "SOUND": {
+            "section": "A",
+            "name_en": "Sound & PA System",
+            "name_ar": "نظام الصوت والنداء العام",
+            "inspection_focus": [
+              "Amplifiers & Controllers",
+              "Speakers",
+              "Microphones"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "بحاجه الى تغيير المايكروفون ",
+            "availability": "AVAILABLE"
+          },
+          "SPORTS": {
+            "section": "A",
+            "name_en": "Playground Equipment & Sports Facilities",
+            "name_ar": "معدات الملاعب والمنشآت الرياضية",
+            "inspection_focus": [
+              "Play Equipment",
+              "Surfaces",
+              "Fencing"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لا توجد معدات لعب ",
+            "availability": "AVAILABLE"
+          },
+          "CLEAN": {
+            "section": "B",
+            "name_en": "Cleaning Services",
+            "name_ar": "خدمات النظافة",
+            "inspection_focus": [
+              "Washrooms",
+              "Classrooms",
+              "Common Areas",
+              "Offices"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "نظيفة جيدة جداً ",
+            "availability": "AVAILABLE"
+          },
+          "LANDSCAPE": {
+            "section": "B",
+            "name_en": "Landscaping Services",
+            "name_ar": "خدمات تنسيق المواقع",
+            "inspection_focus": [
+              "Lawn",
+              "Trees",
+              "Shrubs"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لا يوجد عناية بالمسطحات الخضراء ",
+            "availability": "AVAILABLE"
+          },
+          "PEST": {
+            "section": "B",
+            "name_en": "Pest Control",
+            "name_ar": "مكافحة الآفات",
+            "inspection_focus": [
+              "Internal Areas",
+              "External Areas"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "نظيفة وسليمه من الآفات ",
+            "availability": "AVAILABLE"
+          },
+          "WASTE": {
+            "section": "B",
+            "name_en": "Waste Management",
+            "name_ar": "إدارة النفايات",
+            "inspection_focus": [
+              "Waste Bins"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Manpower / Resource Shortage",
+            "root_cause_ar": "نقص في العمالة / الموارد",
+            "overall_remarks": "ليست المعتمدة ",
+            "availability": "AVAILABLE"
+          },
+          "CHILD": {
+            "section": "C",
+            "name_en": "Child Safety & Access Control",
+            "name_ar": "سلامة الأطفال والتحكم في الدخول",
+            "inspection_focus": [
+              "Entry Gates",
+              "Classrooms",
+              "Playgrounds"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Supervision / QC Gap",
+            "root_cause_ar": "فجوة في الإشراف / ضبط الجودة",
+            "overall_remarks": "الأبواب فيها ملاحظات طفيفه ",
+            "availability": "AVAILABLE"
+          },
+          "EMERG": {
+            "section": "C",
+            "name_en": "Emergency Preparedness",
+            "name_ar": "الاستعداد للطوارئ",
+            "inspection_focus": [
+              "Fire Exits",
+              "Assembly Points",
+              "First Aid"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "مخارج الحريق سليمه مع وجود ملاحظات طفيفه ",
+            "availability": "AVAILABLE"
+          },
+          "HYGIENE": {
+            "section": "C",
+            "name_en": "Environmental Hygiene & Health",
+            "name_ar": "النظافة البيئية والصحة",
+            "inspection_focus": [
+              "Washrooms",
+              "Drinking Water Points",
+              "Cafeteria"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "نظيفه نوعا ما ",
+            "availability": "AVAILABLE"
+          },
+          "SAFETY": {
+            "section": "C",
+            "name_en": "Safety Compliance",
+            "name_ar": "الالتزام بالسلامة",
+            "inspection_focus": [
+              "Signage"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Supervision / QC Gap",
+            "root_cause_ar": "فجوة في الإشراف / ضبط الجودة",
+            "overall_remarks": "اللافتات ليست مطابقه للمواصفات الفنيه ",
+            "availability": "AVAILABLE"
+          },
+          "BEHAV": {
+            "section": "D",
+            "name_en": "Behaviour & Safeguarding Awareness",
+            "name_ar": "الوعي بالسلوك ومتطلبات الحماية",
+            "inspection_focus": [
+              "Student Interaction"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "مهنيه عاليه لا توجد ملاحظات او بلاغات  ",
+            "availability": "AVAILABLE"
+          },
+          "COMPETENCY": {
+            "section": "D",
+            "name_en": "Workforce Performance",
+            "name_ar": "أداء القوى العاملة",
+            "inspection_focus": [
+              "Technicians",
+              "Cleaners"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "عدد العمال ٢ ",
+            "availability": "AVAILABLE"
+          },
+          "ETHICS": {
+            "section": "D",
+            "name_en": "Ethics & Professional Conduct",
+            "name_ar": "الأخلاقيات والسلوك المهني",
+            "inspection_focus": [
+              "Respectful Behaviour"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "مهنيه عاليه لا توجد ملاحظات او بلاغات ",
+            "availability": "AVAILABLE"
+          },
+          "SUPER": {
+            "section": "D",
+            "name_en": "Supervision Effectiveness",
+            "name_ar": "فعالية الإشراف",
+            "inspection_focus": [
+              "Site Lead",
+              "Supervisor"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "تم تقديم التوجيه والإرشاد والمهام",
+            "availability": "AVAILABLE"
+          }
+        },
+        "findingsMap": {
+          "BACKUP": {
+            "en": "Backup Power Systems",
+            "finding": ""
+          },
+          "CIVIL": {
+            "en": "Civil & Structural Works",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "ELEC": {
+            "en": "Electrical Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "FLS": {
+            "en": "Fire & Life Safety Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "HVAC": {
+            "en": "HVAC System",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "LIFT": {
+            "en": "Lifts & Escalators",
+            "finding": ""
+          },
+          "PLUMB": {
+            "en": "Plumbing Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "SOUND": {
+            "en": "Sound & PA System",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "SPORTS": {
+            "en": "Playground Equipment & Sports Facilities",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "CLEAN": {
+            "en": "Cleaning Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LANDSCAPE": {
+            "en": "Landscaping Services",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "PEST": {
+            "en": "Pest Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "WASTE": {
+            "en": "Waste Management",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "CHILD": {
+            "en": "Child Safety & Access Control",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "EMERG": {
+            "en": "Emergency Preparedness",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "HYGIENE": {
+            "en": "Environmental Hygiene & Health",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "SAFETY": {
+            "en": "Safety Compliance",
+            "finding": "عدم مطابقة طفيفة"
           },
           "BEHAV": {
             "en": "Behaviour & Safeguarding Awareness",
@@ -830630,6 +831840,503 @@
             "finding": "مستوفٍ للمعايير"
           }
         }
+      },
+      "WO-202610-02697": {
+        "status": "COMPLETED",
+        "assignment_month": "2026-10",
+        "inspection_cycle": 1,
+        "start_date": "2026-10-18T15:10:25.172Z",
+        "completion_date": "2026-10-18T16:57:44.102Z",
+        "total_work_time_min": 107,
+        "inspector_username": "aa.aljuhani",
+        "inspector_fullname": "Abdullah Ahmed Alrefai Aljuhani",
+        "risk_score": "0.004",
+        "overall_rating": "Good",
+        "overall_rating_remarks": null,
+        "performance_ratings": {
+          "client_value": "Fair",
+          "hse_compliance": "Good",
+          "responsiveness": "Good",
+          "workforce_prof": "Good",
+          "service_quality": "Good",
+          "supervision_comm": "Good"
+        },
+        "photos_by_area": {
+          "ELEC": [
+            {
+              "filename": "WO-202610-02697_ELEC_1.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_ELEC_1.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_ELEC_2.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_ELEC_2.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_ELEC_3.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_ELEC_3.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            }
+          ],
+          "FLS": [
+            {
+              "filename": "WO-202610-02697_FLS_1.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_FLS_1.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_FLS_2.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_FLS_2.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_FLS_3.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_FLS_3.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            }
+          ],
+          "CIVIL": [
+            {
+              "filename": "WO-202610-02697_CIVIL_1.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_CIVIL_1.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_CIVIL_2.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_CIVIL_2.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_CIVIL_3.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_CIVIL_3.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_CIVIL_4.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_CIVIL_4.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            }
+          ],
+          "SPORTS": [
+            {
+              "filename": "WO-202610-02697_SPORTS_1.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_SPORTS_1.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_SPORTS_2.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_SPORTS_2.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            }
+          ],
+          "EMERG": [
+            {
+              "filename": "WO-202610-02697_EMERG_1.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_EMERG_1.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            },
+            {
+              "filename": "WO-202610-02697_EMERG_2.jpg",
+              "url": "photos/SB901401/WO-202610-02697_WO-202610-02697_EMERG_2.jpg",
+              "captured_at": "2026-10-18 19:57:44.173548+03"
+            }
+          ]
+        },
+        "sections": {
+          "BACKUP": {
+            "section": "A",
+            "name_en": "Backup Power Systems",
+            "name_ar": "أنظمة الطاقة الاحتياطية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "CIVIL": {
+            "section": "A",
+            "name_en": "Civil & Structural Works",
+            "name_ar": "الأعمال المدنية والإنشائية",
+            "inspection_focus": [
+              "Walls",
+              "Floors",
+              "Ceilings",
+              "Others"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "-تشققات وكسور في البلاط في الساحة الخارجية بجانب الملعب\n-تشققات في السور من الجهه الداخلية بجانب الملعب",
+            "availability": "AVAILABLE"
+          },
+          "ELEC": {
+            "section": "A",
+            "name_en": "Electrical Systems",
+            "name_ar": "الأنظمة الكهربائية",
+            "inspection_focus": [
+              "Distribution Panels"
+            ],
+            "findings": "Major Non-Conformance",
+            "finding_ar": "عدم مطابقة جسيمة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "شورت في لوحة التوزيع",
+            "availability": "AVAILABLE"
+          },
+          "FLS": {
+            "section": "A",
+            "name_en": "Fire & Life Safety Systems",
+            "name_ar": "أنظمة الحريق والسلامة",
+            "inspection_focus": [
+              "Fire Alarm",
+              "Fire Pump",
+              "Extinguishers",
+              "Others"
+            ],
+            "findings": "Critical / Safety Risk",
+            "finding_ar": "خطر حرج / خطر على السلامة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "-المضخة لاتعمل\n-تنبيه عطل في جهاز الانذار",
+            "availability": "AVAILABLE"
+          },
+          "HVAC": {
+            "section": "A",
+            "name_en": "HVAC System",
+            "name_ar": "نظام التكييف والتهوية",
+            "inspection_focus": [
+              "Window AC",
+              "Split Unit"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "LIFT": {
+            "section": "A",
+            "name_en": "Lifts & Escalators",
+            "name_ar": "المصاعد والسلالم المتحركة",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PLUMB": {
+            "section": "A",
+            "name_en": "Plumbing Systems",
+            "name_ar": "أنظمة السباكة",
+            "inspection_focus": [
+              "Others"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SOUND": {
+            "section": "A",
+            "name_en": "Sound & PA System",
+            "name_ar": "نظام الصوت والنداء العام",
+            "inspection_focus": [
+              "Speakers",
+              "Microphones"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SPORTS": {
+            "section": "A",
+            "name_en": "Playground Equipment & Sports Facilities",
+            "name_ar": "معدات الملاعب والمنشآت الرياضية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "CLEAN": {
+            "section": "B",
+            "name_en": "Cleaning Services",
+            "name_ar": "خدمات النظافة",
+            "inspection_focus": [
+              "Washrooms",
+              "Classrooms",
+              "Common Areas",
+              "Offices",
+              "Others"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "LANDSCAPE": {
+            "section": "B",
+            "name_en": "Landscaping Services",
+            "name_ar": "خدمات تنسيق المواقع",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PEST": {
+            "section": "B",
+            "name_en": "Pest Control",
+            "name_ar": "مكافحة الآفات",
+            "inspection_focus": [
+              "Internal Areas",
+              "External Areas",
+              "Food Preparation Areas",
+              "Others"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "WASTE": {
+            "section": "B",
+            "name_en": "Waste Management",
+            "name_ar": "إدارة النفايات",
+            "inspection_focus": [
+              "Waste Bins"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "CHILD": {
+            "section": "C",
+            "name_en": "Child Safety & Access Control",
+            "name_ar": "سلامة الأطفال والتحكم في الدخول",
+            "inspection_focus": [
+              "Entry Gates",
+              "Classrooms"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "EMERG": {
+            "section": "C",
+            "name_en": "Emergency Preparedness",
+            "name_ar": "الاستعداد للطوارئ",
+            "inspection_focus": [
+              "Fire Exits"
+            ],
+            "findings": "Critical / Safety Risk",
+            "finding_ar": "خطر حرج / خطر على السلامة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "-مخرج طوارئ مغلق",
+            "availability": "AVAILABLE"
+          },
+          "HYGIENE": {
+            "section": "C",
+            "name_en": "Environmental Hygiene & Health",
+            "name_ar": "النظافة البيئية والصحة",
+            "inspection_focus": [
+              "Washrooms",
+              "Cafeteria",
+              "Drinking Water Points"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SAFETY": {
+            "section": "C",
+            "name_en": "Safety Compliance",
+            "name_ar": "الالتزام بالسلامة",
+            "inspection_focus": [
+              "PPE"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Supervision / QC Gap",
+            "root_cause_ar": "فجوة في الإشراف / ضبط الجودة",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "BEHAV": {
+            "section": "D",
+            "name_en": "Behaviour & Safeguarding Awareness",
+            "name_ar": "الوعي بالسلوك ومتطلبات الحماية",
+            "inspection_focus": [
+              "Student Interaction"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "COMPETENCY": {
+            "section": "D",
+            "name_en": "Workforce Performance",
+            "name_ar": "أداء القوى العاملة",
+            "inspection_focus": [
+              "Technicians",
+              "Cleaners"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "ETHICS": {
+            "section": "D",
+            "name_en": "Ethics & Professional Conduct",
+            "name_ar": "الأخلاقيات والسلوك المهني",
+            "inspection_focus": [
+              "Respectful Behaviour"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SUPER": {
+            "section": "D",
+            "name_en": "Supervision Effectiveness",
+            "name_ar": "فعالية الإشراف",
+            "inspection_focus": [
+              "Supervisor",
+              "Site Lead"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Supervision / QC Gap",
+            "root_cause_ar": "فجوة في الإشراف / ضبط الجودة",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          }
+        },
+        "findingsMap": {
+          "BACKUP": {
+            "en": "Backup Power Systems",
+            "finding": ""
+          },
+          "CIVIL": {
+            "en": "Civil & Structural Works",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "ELEC": {
+            "en": "Electrical Systems",
+            "finding": "عدم مطابقة جسيمة"
+          },
+          "FLS": {
+            "en": "Fire & Life Safety Systems",
+            "finding": "خطر حرج / خطر على السلامة"
+          },
+          "HVAC": {
+            "en": "HVAC System",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LIFT": {
+            "en": "Lifts & Escalators",
+            "finding": ""
+          },
+          "PLUMB": {
+            "en": "Plumbing Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SOUND": {
+            "en": "Sound & PA System",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SPORTS": {
+            "en": "Playground Equipment & Sports Facilities",
+            "finding": ""
+          },
+          "CLEAN": {
+            "en": "Cleaning Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LANDSCAPE": {
+            "en": "Landscaping Services",
+            "finding": ""
+          },
+          "PEST": {
+            "en": "Pest Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "WASTE": {
+            "en": "Waste Management",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "CHILD": {
+            "en": "Child Safety & Access Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "EMERG": {
+            "en": "Emergency Preparedness",
+            "finding": "خطر حرج / خطر على السلامة"
+          },
+          "HYGIENE": {
+            "en": "Environmental Hygiene & Health",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SAFETY": {
+            "en": "Safety Compliance",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "BEHAV": {
+            "en": "Behaviour & Safeguarding Awareness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "COMPETENCY": {
+            "en": "Workforce Performance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "ETHICS": {
+            "en": "Ethics & Professional Conduct",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SUPER": {
+            "en": "Supervision Effectiveness",
+            "finding": "عدم مطابقة طفيفة"
+          }
+        }
       }
     }
   },
@@ -992658,6 +994365,736 @@
           "COMPETENCY": {
             "en": "Workforce Performance",
             "finding": "ملاحظة تشغيلية"
+          },
+          "ETHICS": {
+            "en": "Ethics & Professional Conduct",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SUPER": {
+            "en": "Supervision Effectiveness",
+            "finding": "مستوفٍ للمعايير"
+          }
+        }
+      },
+      "WO-202610-03457": {
+        "status": "COMPLETED",
+        "assignment_month": "2026-10",
+        "inspection_cycle": 1,
+        "start_date": "2026-10-18T14:20:43.994Z",
+        "completion_date": "2026-10-18T14:44:45.540Z",
+        "total_work_time_min": 24,
+        "inspector_username": "o.aldeer",
+        "inspector_fullname": "Omar Eldeer",
+        "risk_score": "0.008",
+        "overall_rating": "Good",
+        "overall_rating_remarks": null,
+        "performance_ratings": {
+          "client_value": "Good",
+          "hse_compliance": "Good",
+          "responsiveness": "Good",
+          "workforce_prof": "Good",
+          "service_quality": "Good",
+          "supervision_comm": "Excellent"
+        },
+        "photos_by_area": {
+          "HVAC": [
+            {
+              "filename": "WO-202610-03457_HVAC_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HVAC_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_HVAC_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HVAC_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_HVAC_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HVAC_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_HVAC_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HVAC_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "ELEC": [
+            {
+              "filename": "WO-202610-03457_ELEC_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_ELEC_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_ELEC_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_ELEC_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_ELEC_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_ELEC_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_ELEC_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_ELEC_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "PLUMB": [
+            {
+              "filename": "WO-202610-03457_PLUMB_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PLUMB_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_PLUMB_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PLUMB_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_PLUMB_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PLUMB_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_PLUMB_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PLUMB_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "FLS": [
+            {
+              "filename": "WO-202610-03457_FLS_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_FLS_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_FLS_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_FLS_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_FLS_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_FLS_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_FLS_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_FLS_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "CIVIL": [
+            {
+              "filename": "WO-202610-03457_CIVIL_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CIVIL_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CIVIL_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CIVIL_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CIVIL_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CIVIL_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CIVIL_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CIVIL_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "SPORTS": [
+            {
+              "filename": "WO-202610-03457_SPORTS_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SPORTS_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_SPORTS_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SPORTS_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_SPORTS_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SPORTS_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_SPORTS_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SPORTS_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "CLEAN": [
+            {
+              "filename": "WO-202610-03457_CLEAN_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CLEAN_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CLEAN_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CLEAN_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CLEAN_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CLEAN_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CLEAN_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CLEAN_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "WASTE": [
+            {
+              "filename": "WO-202610-03457_WASTE_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_WASTE_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_WASTE_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_WASTE_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_WASTE_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_WASTE_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_WASTE_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_WASTE_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "LANDSCAPE": [
+            {
+              "filename": "WO-202610-03457_LANDSCAPE_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_LANDSCAPE_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_LANDSCAPE_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_LANDSCAPE_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_LANDSCAPE_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_LANDSCAPE_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_LANDSCAPE_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_LANDSCAPE_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "PEST": [
+            {
+              "filename": "WO-202610-03457_PEST_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PEST_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_PEST_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PEST_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_PEST_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PEST_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_PEST_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_PEST_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "SAFETY": [
+            {
+              "filename": "WO-202610-03457_SAFETY_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SAFETY_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_SAFETY_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SAFETY_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_SAFETY_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SAFETY_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_SAFETY_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_SAFETY_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "EMERG": [
+            {
+              "filename": "WO-202610-03457_EMERG_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_EMERG_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_EMERG_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_EMERG_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_EMERG_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_EMERG_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_EMERG_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_EMERG_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "CHILD": [
+            {
+              "filename": "WO-202610-03457_CHILD_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CHILD_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CHILD_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CHILD_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CHILD_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CHILD_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_CHILD_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_CHILD_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ],
+          "HYGIENE": [
+            {
+              "filename": "WO-202610-03457_HYGIENE_1.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HYGIENE_1.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_HYGIENE_2.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HYGIENE_2.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_HYGIENE_3.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HYGIENE_3.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            },
+            {
+              "filename": "WO-202610-03457_HYGIENE_4.jpg",
+              "url": "photos/SB902560/WO-202610-03457_WO-202610-03457_HYGIENE_4.jpg",
+              "captured_at": "2026-10-18 17:44:45.648174+03"
+            }
+          ]
+        },
+        "sections": {
+          "BACKUP": {
+            "section": "A",
+            "name_en": "Backup Power Systems",
+            "name_ar": "أنظمة الطاقة الاحتياطية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "CIVIL": {
+            "section": "A",
+            "name_en": "Civil & Structural Works",
+            "name_ar": "الأعمال المدنية والإنشائية",
+            "inspection_focus": [
+              "Walls",
+              "Floors",
+              "Ceilings"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "توجد تشققات كثيرة بالمبنى ",
+            "availability": "AVAILABLE"
+          },
+          "ELEC": {
+            "section": "A",
+            "name_en": "Electrical Systems",
+            "name_ar": "الأنظمة الكهربائية",
+            "inspection_focus": [
+              "Distribution Panels",
+              "Lighting"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "توجد تمديدات عشوائية ",
+            "availability": "AVAILABLE"
+          },
+          "FLS": {
+            "section": "A",
+            "name_en": "Fire & Life Safety Systems",
+            "name_ar": "أنظمة الحريق والسلامة",
+            "inspection_focus": [
+              "Fire Alarm",
+              "Fire Pump",
+              "Extinguishers"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "نظام الحريق سليم بشكل عام ",
+            "availability": "AVAILABLE"
+          },
+          "HVAC": {
+            "section": "A",
+            "name_en": "HVAC System",
+            "name_ar": "نظام التكييف والتهوية",
+            "inspection_focus": [
+              "Window AC"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "وحدات التكييف ضعيفه جداً ",
+            "availability": "AVAILABLE"
+          },
+          "LIFT": {
+            "section": "A",
+            "name_en": "Lifts & Escalators",
+            "name_ar": "المصاعد والسلالم المتحركة",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PLUMB": {
+            "section": "A",
+            "name_en": "Plumbing Systems",
+            "name_ar": "أنظمة السباكة",
+            "inspection_focus": [
+              "Pumps",
+              "Valves",
+              "Water Tanks"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "لا يوجد تسريب مياه ",
+            "availability": "AVAILABLE"
+          },
+          "SOUND": {
+            "section": "A",
+            "name_en": "Sound & PA System",
+            "name_ar": "نظام الصوت والنداء العام",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "SPORTS": {
+            "section": "A",
+            "name_en": "Playground Equipment & Sports Facilities",
+            "name_ar": "معدات الملاعب والمنشآت الرياضية",
+            "inspection_focus": [
+              "Play Equipment",
+              "Surfaces",
+              "Fencing"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لا توجد ابداً معدات لعب والأسوار بحاله سيئة جداً ",
+            "availability": "AVAILABLE"
+          },
+          "CLEAN": {
+            "section": "B",
+            "name_en": "Cleaning Services",
+            "name_ar": "خدمات النظافة",
+            "inspection_focus": [
+              "Washrooms",
+              "Classrooms",
+              "Common Areas",
+              "Offices"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "المدرسة نظيفة بشكل عام ولكن توجد ملاحظات طفيفه ",
+            "availability": "AVAILABLE"
+          },
+          "LANDSCAPE": {
+            "section": "B",
+            "name_en": "Landscaping Services",
+            "name_ar": "خدمات تنسيق المواقع",
+            "inspection_focus": [
+              "Lawn",
+              "Trees",
+              "Shrubs"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لا توجد أبدا عنايه بالتشجير ",
+            "availability": "AVAILABLE"
+          },
+          "PEST": {
+            "section": "B",
+            "name_en": "Pest Control",
+            "name_ar": "مكافحة الآفات",
+            "inspection_focus": [
+              "Internal Areas",
+              "External Areas"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لا توجد آثار آفات ",
+            "availability": "AVAILABLE"
+          },
+          "WASTE": {
+            "section": "B",
+            "name_en": "Waste Management",
+            "name_ar": "إدارة النفايات",
+            "inspection_focus": [
+              "Waste Bins"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Manpower / Resource Shortage",
+            "root_cause_ar": "نقص في العمالة / الموارد",
+            "overall_remarks": "جميع الحاويات ليست مطابقه للمواصفات الفنيه ",
+            "availability": "AVAILABLE"
+          },
+          "CHILD": {
+            "section": "C",
+            "name_en": "Child Safety & Access Control",
+            "name_ar": "سلامة الأطفال والتحكم في الدخول",
+            "inspection_focus": [
+              "Entry Gates",
+              "Classrooms",
+              "Playgrounds"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "البوابات سليمه بشكل عام ",
+            "availability": "AVAILABLE"
+          },
+          "EMERG": {
+            "section": "C",
+            "name_en": "Emergency Preparedness",
+            "name_ar": "الاستعداد للطوارئ",
+            "inspection_focus": [
+              "Fire Exits",
+              "Assembly Points",
+              "First Aid"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "ابواب الطوارئ غير مطابقه للمواصفات الفنيه ",
+            "availability": "AVAILABLE"
+          },
+          "HYGIENE": {
+            "section": "C",
+            "name_en": "Environmental Hygiene & Health",
+            "name_ar": "النظافة البيئية والصحة",
+            "inspection_focus": [
+              "Washrooms",
+              "Drinking Water Points",
+              "Cafeteria"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "دورات المياه نظيفه وبحاله جيدة جداً ",
+            "availability": "AVAILABLE"
+          },
+          "SAFETY": {
+            "section": "C",
+            "name_en": "Safety Compliance",
+            "name_ar": "الالتزام بالسلامة",
+            "inspection_focus": [
+              "Signage"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "اللافتات مطابقه للمواصفات الفنيه ومضيئه بشكل واضح ",
+            "availability": "AVAILABLE"
+          },
+          "BEHAV": {
+            "section": "D",
+            "name_en": "Behaviour & Safeguarding Awareness",
+            "name_ar": "الوعي بالسلوك ومتطلبات الحماية",
+            "inspection_focus": [
+              "Student Interaction"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "لا توجد بلاغات تذكر وعدد الطالبات جداً قليل ",
+            "availability": "AVAILABLE"
+          },
+          "COMPETENCY": {
+            "section": "D",
+            "name_en": "Workforce Performance",
+            "name_ar": "أداء القوى العاملة",
+            "inspection_focus": [
+              "Technicians",
+              "Cleaners"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "عدد عمال النظافه ١ فقط ",
+            "availability": "AVAILABLE"
+          },
+          "ETHICS": {
+            "section": "D",
+            "name_en": "Ethics & Professional Conduct",
+            "name_ar": "الأخلاقيات والسلوك المهني",
+            "inspection_focus": [
+              "Respectful Behaviour"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "محترم ولا توجد بلاغات تذكر وعدد الطالبات جداً قليل ",
+            "availability": "AVAILABLE"
+          },
+          "SUPER": {
+            "section": "D",
+            "name_en": "Supervision Effectiveness",
+            "name_ar": "فعالية الإشراف",
+            "inspection_focus": [
+              "Site Lead",
+              "Supervisor"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "تم توجيه العمال والمهام ",
+            "availability": "AVAILABLE"
+          }
+        },
+        "findingsMap": {
+          "BACKUP": {
+            "en": "Backup Power Systems",
+            "finding": ""
+          },
+          "CIVIL": {
+            "en": "Civil & Structural Works",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "ELEC": {
+            "en": "Electrical Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "FLS": {
+            "en": "Fire & Life Safety Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "HVAC": {
+            "en": "HVAC System",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "LIFT": {
+            "en": "Lifts & Escalators",
+            "finding": ""
+          },
+          "PLUMB": {
+            "en": "Plumbing Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SOUND": {
+            "en": "Sound & PA System",
+            "finding": ""
+          },
+          "SPORTS": {
+            "en": "Playground Equipment & Sports Facilities",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "CLEAN": {
+            "en": "Cleaning Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LANDSCAPE": {
+            "en": "Landscaping Services",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "PEST": {
+            "en": "Pest Control",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "WASTE": {
+            "en": "Waste Management",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "CHILD": {
+            "en": "Child Safety & Access Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "EMERG": {
+            "en": "Emergency Preparedness",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "HYGIENE": {
+            "en": "Environmental Hygiene & Health",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SAFETY": {
+            "en": "Safety Compliance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "BEHAV": {
+            "en": "Behaviour & Safeguarding Awareness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "COMPETENCY": {
+            "en": "Workforce Performance",
+            "finding": "مستوفٍ للمعايير"
           },
           "ETHICS": {
             "en": "Ethics & Professional Conduct",
@@ -1848774,6 +1851211,471 @@
           "LANDSCAPE": {
             "en": "Landscaping Services",
             "finding": "مستوفٍ للمعايير"
+          },
+          "PEST": {
+            "en": "Pest Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "WASTE": {
+            "en": "Waste Management",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "CHILD": {
+            "en": "Child Safety & Access Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "EMERG": {
+            "en": "Emergency Preparedness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "HYGIENE": {
+            "en": "Environmental Hygiene & Health",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SAFETY": {
+            "en": "Safety Compliance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "BEHAV": {
+            "en": "Behaviour & Safeguarding Awareness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "COMPETENCY": {
+            "en": "Workforce Performance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "ETHICS": {
+            "en": "Ethics & Professional Conduct",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SUPER": {
+            "en": "Supervision Effectiveness",
+            "finding": "مستوفٍ للمعايير"
+          }
+        }
+      },
+      "WO-202610-03241": {
+        "status": "COMPLETED",
+        "assignment_month": "2026-10",
+        "inspection_cycle": 1,
+        "start_date": "2026-10-20T06:10:57.099Z",
+        "completion_date": "2026-10-20T06:38:37.315Z",
+        "total_work_time_min": 27,
+        "inspector_username": "sh.alsufyani",
+        "inspector_fullname": "Shaima Alsufyani",
+        "risk_score": "0.002",
+        "overall_rating": "Fair",
+        "overall_rating_remarks": null,
+        "performance_ratings": {
+          "client_value": "Fair",
+          "hse_compliance": "Fair",
+          "responsiveness": "Fair",
+          "workforce_prof": "Fair",
+          "service_quality": "Fair",
+          "supervision_comm": "Fair"
+        },
+        "photos_by_area": {
+          "HVAC": [
+            {
+              "filename": "WO-202610-03241_HVAC_1.jpg",
+              "url": "photos/SB902264/WO-202610-03241_WO-202610-03241_HVAC_1.jpg",
+              "captured_at": "2026-10-20 09:38:37.358563+03"
+            }
+          ],
+          "ELEC": [
+            {
+              "filename": "WO-202610-03241_ELEC_1.jpg",
+              "url": "photos/SB902264/WO-202610-03241_WO-202610-03241_ELEC_1.jpg",
+              "captured_at": "2026-10-20 09:38:37.358563+03"
+            }
+          ],
+          "FLS": [
+            {
+              "filename": "WO-202610-03241_FLS_1.jpg",
+              "url": "photos/SB902264/WO-202610-03241_WO-202610-03241_FLS_1.jpg",
+              "captured_at": "2026-10-20 09:38:37.358563+03"
+            },
+            {
+              "filename": "WO-202610-03241_FLS_2.jpg",
+              "url": "photos/SB902264/WO-202610-03241_WO-202610-03241_FLS_2.jpg",
+              "captured_at": "2026-10-20 09:38:37.358563+03"
+            }
+          ]
+        },
+        "sections": {
+          "BACKUP": {
+            "section": "A",
+            "name_en": "Backup Power Systems",
+            "name_ar": "أنظمة الطاقة الاحتياطية",
+            "inspection_focus": [
+              "Generator",
+              "UPS Units",
+              "ATS / Changeover Panel"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "CIVIL": {
+            "section": "A",
+            "name_en": "Civil & Structural Works",
+            "name_ar": "الأعمال المدنية والإنشائية",
+            "inspection_focus": [
+              "Walls",
+              "Floors",
+              "Ceilings"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "ELEC": {
+            "section": "A",
+            "name_en": "Electrical Systems",
+            "name_ar": "الأنظمة الكهربائية",
+            "inspection_focus": [
+              "Distribution Panels",
+              "Lighting",
+              "Emergency Power"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "- القواطع الفرعية غير مثبتة\n- يوجد تمديدات عشوائية اضافية بالمبنى ( غرفة المديرة ، غرفة الوكية ) ",
+            "availability": "AVAILABLE"
+          },
+          "FLS": {
+            "section": "A",
+            "name_en": "Fire & Life Safety Systems",
+            "name_ar": "أنظمة الحريق والسلامة",
+            "inspection_focus": [
+              "Fire Alarm",
+              "Fire Pump",
+              "Extinguishers"
+            ],
+            "findings": "Major Non-Conformance",
+            "finding_ar": "عدم مطابقة جسيمة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لوحة الانذار لا تعمل \nكواسر الانذار لا تعمل",
+            "availability": "AVAILABLE"
+          },
+          "HVAC": {
+            "section": "A",
+            "name_en": "HVAC System",
+            "name_ar": "نظام التكييف والتهوية",
+            "inspection_focus": [
+              "Window AC",
+              "Split Unit"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "لا زال يوجد صوت صادر من وحدة التكييف بغرفة الاداريات بالدور الارضي ",
+            "availability": "AVAILABLE"
+          },
+          "LIFT": {
+            "section": "A",
+            "name_en": "Lifts & Escalators",
+            "name_ar": "المصاعد والسلالم المتحركة",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PLUMB": {
+            "section": "A",
+            "name_en": "Plumbing Systems",
+            "name_ar": "أنظمة السباكة",
+            "inspection_focus": [
+              "Pumps",
+              "Valves",
+              "Water Tanks"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SOUND": {
+            "section": "A",
+            "name_en": "Sound & PA System",
+            "name_ar": "نظام الصوت والنداء العام",
+            "inspection_focus": [
+              "Amplifiers & Controllers",
+              "Speakers",
+              "Microphones"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SPORTS": {
+            "section": "A",
+            "name_en": "Playground Equipment & Sports Facilities",
+            "name_ar": "معدات الملاعب والمنشآت الرياضية",
+            "inspection_focus": [
+              "Play Equipment",
+              "Surfaces",
+              "Fencing"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "CLEAN": {
+            "section": "B",
+            "name_en": "Cleaning Services",
+            "name_ar": "خدمات النظافة",
+            "inspection_focus": [
+              "Washrooms",
+              "Classrooms",
+              "Common Areas",
+              "Offices"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "LANDSCAPE": {
+            "section": "B",
+            "name_en": "Landscaping Services",
+            "name_ar": "خدمات تنسيق المواقع",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_APPLICABLE"
+          },
+          "PEST": {
+            "section": "B",
+            "name_en": "Pest Control",
+            "name_ar": "مكافحة الآفات",
+            "inspection_focus": [
+              "Internal Areas",
+              "External Areas",
+              "Food Preparation Areas"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "WASTE": {
+            "section": "B",
+            "name_en": "Waste Management",
+            "name_ar": "إدارة النفايات",
+            "inspection_focus": [
+              "Waste Bins",
+              "Compactor",
+              "Collection Points"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "CHILD": {
+            "section": "C",
+            "name_en": "Child Safety & Access Control",
+            "name_ar": "سلامة الأطفال والتحكم في الدخول",
+            "inspection_focus": [
+              "Entry Gates",
+              "Classrooms",
+              "Playgrounds"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "EMERG": {
+            "section": "C",
+            "name_en": "Emergency Preparedness",
+            "name_ar": "الاستعداد للطوارئ",
+            "inspection_focus": [
+              "Fire Exits",
+              "Assembly Points",
+              "First Aid"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "HYGIENE": {
+            "section": "C",
+            "name_en": "Environmental Hygiene & Health",
+            "name_ar": "النظافة البيئية والصحة",
+            "inspection_focus": [
+              "Washrooms",
+              "Cafeteria",
+              "Drinking Water Points"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SAFETY": {
+            "section": "C",
+            "name_en": "Safety Compliance",
+            "name_ar": "الالتزام بالسلامة",
+            "inspection_focus": [
+              "PPE",
+              "Signage",
+              "Barricading"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "BEHAV": {
+            "section": "D",
+            "name_en": "Behaviour & Safeguarding Awareness",
+            "name_ar": "الوعي بالسلوك ومتطلبات الحماية",
+            "inspection_focus": [
+              "Classroom & Corridor Presence",
+              "Student Interaction",
+              "Playground Areas"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "COMPETENCY": {
+            "section": "D",
+            "name_en": "Workforce Performance",
+            "name_ar": "أداء القوى العاملة",
+            "inspection_focus": [
+              "Technicians",
+              "Cleaners",
+              "Gardeners"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "ETHICS": {
+            "section": "D",
+            "name_en": "Ethics & Professional Conduct",
+            "name_ar": "الأخلاقيات والسلوك المهني",
+            "inspection_focus": [
+              "Respectful Behaviour",
+              "Cultural Sensitivity",
+              "Accountability"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SUPER": {
+            "section": "D",
+            "name_en": "Supervision Effectiveness",
+            "name_ar": "فعالية الإشراف",
+            "inspection_focus": [
+              "Site Lead",
+              "Supervisor",
+              "Shift In-charge"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          }
+        },
+        "findingsMap": {
+          "BACKUP": {
+            "en": "Backup Power Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "CIVIL": {
+            "en": "Civil & Structural Works",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "ELEC": {
+            "en": "Electrical Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "FLS": {
+            "en": "Fire & Life Safety Systems",
+            "finding": "عدم مطابقة جسيمة"
+          },
+          "HVAC": {
+            "en": "HVAC System",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "LIFT": {
+            "en": "Lifts & Escalators",
+            "finding": ""
+          },
+          "PLUMB": {
+            "en": "Plumbing Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SOUND": {
+            "en": "Sound & PA System",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SPORTS": {
+            "en": "Playground Equipment & Sports Facilities",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "CLEAN": {
+            "en": "Cleaning Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LANDSCAPE": {
+            "en": "Landscaping Services",
+            "finding": ""
           },
           "PEST": {
             "en": "Pest Control",
@@ -2795346,6 +2798248,467 @@
           "SUPER": {
             "en": "Supervision Effectiveness",
             "finding": "عدم مطابقة طفيفة"
+          }
+        }
+      }
+    }
+  },
+  "SB900830": {
+    "name": "كلية الثانوية - مسارات",
+    "site": "JEDDAH",
+    "neighbourhood": "حي كلية",
+    "ministry_id": "M3932589",
+    "geo": {
+      "latitude": "22.5275600",
+      "longitude": "39.2981200"
+    },
+    "workOrders": {
+      "WO-202610-00602": {
+        "status": "COMPLETED",
+        "assignment_month": "2026-10",
+        "inspection_cycle": 1,
+        "start_date": "2026-10-19T10:21:06.486Z",
+        "completion_date": "2026-10-19T10:41:26.533Z",
+        "total_work_time_min": 20,
+        "inspector_username": "n.koujar",
+        "inspector_fullname": "نواف ابو كوجر",
+        "risk_score": "0.001",
+        "overall_rating": "Good",
+        "overall_rating_remarks": null,
+        "performance_ratings": {
+          "client_value": "Good",
+          "hse_compliance": "Good",
+          "responsiveness": "Good",
+          "workforce_prof": "Good",
+          "service_quality": "Good",
+          "supervision_comm": "Good"
+        },
+        "photos_by_area": {
+          "HVAC": [
+            {
+              "filename": "WO-202610-00602_HVAC_1.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_HVAC_1.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            }
+          ],
+          "PLUMB": [
+            {
+              "filename": "WO-202610-00602_PLUMB_1.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_PLUMB_1.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            }
+          ],
+          "FLS": [
+            {
+              "filename": "WO-202610-00602_FLS_1.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_FLS_1.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            },
+            {
+              "filename": "WO-202610-00602_FLS_2.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_FLS_2.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            }
+          ],
+          "CIVIL": [
+            {
+              "filename": "WO-202610-00602_CIVIL_1.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_CIVIL_1.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            },
+            {
+              "filename": "WO-202610-00602_CIVIL_2.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_CIVIL_2.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            },
+            {
+              "filename": "WO-202610-00602_CIVIL_3.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_CIVIL_3.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            }
+          ],
+          "WASTE": [
+            {
+              "filename": "WO-202610-00602_WASTE_1.jpg",
+              "url": "photos/SB900830/WO-202610-00602_WO-202610-00602_WASTE_1.jpg",
+              "captured_at": "2026-10-19 13:41:26.646549+03"
+            }
+          ]
+        },
+        "sections": {
+          "BACKUP": {
+            "section": "A",
+            "name_en": "Backup Power Systems",
+            "name_ar": "أنظمة الطاقة الاحتياطية",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "CIVIL": {
+            "section": "A",
+            "name_en": "Civil & Structural Works",
+            "name_ar": "الأعمال المدنية والإنشائية",
+            "inspection_focus": [
+              "Walls",
+              "Floors"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "معالجة الجدران والأرضيات ",
+            "availability": "AVAILABLE"
+          },
+          "ELEC": {
+            "section": "A",
+            "name_en": "Electrical Systems",
+            "name_ar": "الأنظمة الكهربائية",
+            "inspection_focus": [
+              "Lighting"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "FLS": {
+            "section": "A",
+            "name_en": "Fire & Life Safety Systems",
+            "name_ar": "أنظمة الحريق والسلامة",
+            "inspection_focus": [
+              "Fire Alarm",
+              "Extinguishers"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "معالجة لوحة الإنذار \nنقص طفايات",
+            "availability": "AVAILABLE"
+          },
+          "HVAC": {
+            "section": "A",
+            "name_en": "HVAC System",
+            "name_ar": "نظام التكييف والتهوية",
+            "inspection_focus": [
+              "Window AC"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "تركيب اوجه المكيف",
+            "availability": "AVAILABLE"
+          },
+          "LIFT": {
+            "section": "A",
+            "name_en": "Lifts & Escalators",
+            "name_ar": "المصاعد والسلالم المتحركة",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "PLUMB": {
+            "section": "A",
+            "name_en": "Plumbing Systems",
+            "name_ar": "أنظمة السباكة",
+            "inspection_focus": [
+              "Valves"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "PPM Failure",
+            "root_cause_ar": "إخفاق في الصيانة الوقائية المخططة",
+            "overall_remarks": "معالجة الانسداد ",
+            "availability": "AVAILABLE"
+          },
+          "SOUND": {
+            "section": "A",
+            "name_en": "Sound & PA System",
+            "name_ar": "نظام الصوت والنداء العام",
+            "inspection_focus": [
+              "Speakers"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SPORTS": {
+            "section": "A",
+            "name_en": "Playground Equipment & Sports Facilities",
+            "name_ar": "معدات الملاعب والمنشآت الرياضية",
+            "inspection_focus": [
+              "Play Equipment"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "CLEAN": {
+            "section": "B",
+            "name_en": "Cleaning Services",
+            "name_ar": "خدمات النظافة",
+            "inspection_focus": [
+              "Washrooms"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "LANDSCAPE": {
+            "section": "B",
+            "name_en": "Landscaping Services",
+            "name_ar": "خدمات تنسيق المواقع",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "PEST": {
+            "section": "B",
+            "name_en": "Pest Control",
+            "name_ar": "مكافحة الآفات",
+            "inspection_focus": [],
+            "findings": "",
+            "finding_ar": "",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "NOT_AVAILABLE"
+          },
+          "WASTE": {
+            "section": "B",
+            "name_en": "Waste Management",
+            "name_ar": "إدارة النفايات",
+            "inspection_focus": [
+              "Waste Bins"
+            ],
+            "findings": "Minor Non-Conformance",
+            "finding_ar": "عدم مطابقة طفيفة",
+            "root_cause": "Sub-contractor / Vendor Non-Compliance",
+            "root_cause_ar": "عدم التزام المقاول الفرعي / المورد",
+            "overall_remarks": "غير معتمدة ",
+            "availability": "AVAILABLE"
+          },
+          "CHILD": {
+            "section": "C",
+            "name_en": "Child Safety & Access Control",
+            "name_ar": "سلامة الأطفال والتحكم في الدخول",
+            "inspection_focus": [
+              "Entry Gates"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "EMERG": {
+            "section": "C",
+            "name_en": "Emergency Preparedness",
+            "name_ar": "الاستعداد للطوارئ",
+            "inspection_focus": [
+              "Fire Exits"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "HYGIENE": {
+            "section": "C",
+            "name_en": "Environmental Hygiene & Health",
+            "name_ar": "النظافة البيئية والصحة",
+            "inspection_focus": [
+              "Washrooms"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SAFETY": {
+            "section": "C",
+            "name_en": "Safety Compliance",
+            "name_ar": "الالتزام بالسلامة",
+            "inspection_focus": [
+              "Others"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "BEHAV": {
+            "section": "D",
+            "name_en": "Behaviour & Safeguarding Awareness",
+            "name_ar": "الوعي بالسلوك ومتطلبات الحماية",
+            "inspection_focus": [
+              "Others"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "COMPETENCY": {
+            "section": "D",
+            "name_en": "Workforce Performance",
+            "name_ar": "أداء القوى العاملة",
+            "inspection_focus": [
+              "Technicians"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "ETHICS": {
+            "section": "D",
+            "name_en": "Ethics & Professional Conduct",
+            "name_ar": "الأخلاقيات والسلوك المهني",
+            "inspection_focus": [
+              "Respectful Behaviour"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          },
+          "SUPER": {
+            "section": "D",
+            "name_en": "Supervision Effectiveness",
+            "name_ar": "فعالية الإشراف",
+            "inspection_focus": [
+              "Supervisor"
+            ],
+            "findings": "Meets Standards",
+            "finding_ar": "مستوفٍ للمعايير",
+            "root_cause": "",
+            "root_cause_ar": "",
+            "overall_remarks": "",
+            "availability": "AVAILABLE"
+          }
+        },
+        "findingsMap": {
+          "BACKUP": {
+            "en": "Backup Power Systems",
+            "finding": ""
+          },
+          "CIVIL": {
+            "en": "Civil & Structural Works",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "ELEC": {
+            "en": "Electrical Systems",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "FLS": {
+            "en": "Fire & Life Safety Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "HVAC": {
+            "en": "HVAC System",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "LIFT": {
+            "en": "Lifts & Escalators",
+            "finding": ""
+          },
+          "PLUMB": {
+            "en": "Plumbing Systems",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "SOUND": {
+            "en": "Sound & PA System",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SPORTS": {
+            "en": "Playground Equipment & Sports Facilities",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "CLEAN": {
+            "en": "Cleaning Services",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "LANDSCAPE": {
+            "en": "Landscaping Services",
+            "finding": ""
+          },
+          "PEST": {
+            "en": "Pest Control",
+            "finding": ""
+          },
+          "WASTE": {
+            "en": "Waste Management",
+            "finding": "عدم مطابقة طفيفة"
+          },
+          "CHILD": {
+            "en": "Child Safety & Access Control",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "EMERG": {
+            "en": "Emergency Preparedness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "HYGIENE": {
+            "en": "Environmental Hygiene & Health",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SAFETY": {
+            "en": "Safety Compliance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "BEHAV": {
+            "en": "Behaviour & Safeguarding Awareness",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "COMPETENCY": {
+            "en": "Workforce Performance",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "ETHICS": {
+            "en": "Ethics & Professional Conduct",
+            "finding": "مستوفٍ للمعايير"
+          },
+          "SUPER": {
+            "en": "Supervision Effectiveness",
+            "finding": "مستوفٍ للمعايير"
           }
         }
       }
